@@ -192,10 +192,6 @@ if st.button("Start script 1") and bf_files and pl_files:
             ax.set_ylabel('Frequency')
             ax.legend()
 
-            # Save histogram
-            histogram_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Histogram_cells.png")
-            plt.savefig(histogram_path, dpi=300, bbox_inches='tight')
-
             # Show in Streamlit
             st.pyplot(fig)
 
@@ -227,18 +223,6 @@ if st.button("Start script 1") and bf_files and pl_files:
             ax.legend()
             # Show in Streamlit
             st.pyplot(fig)
-
-            # Save histogram image
-            histogram_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Histogram_crystals.png")
-            plt.savefig(histogram_path, dpi=300, bbox_inches='tight')
-            st.image(histogram_path, caption=f"Histogram for {bf_file.name}", use_column_width=True)
-
-            # Plot binary image for 'B' and save it
-            binaryB_image_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_binaryB.png")
-            cv2.imwrite(binaryB_image_path, binary_B)
-            st.image(binaryB_image_path, caption=f"Binary Image for {bf_file.name}", use_column_width=True)
-            # Show in Streamlit
-            st.pyplot(binary_B)
 
             # Resize for alignment and calculate overlap
             filtered_binary_A_resized = cv2.resize(binary_B, (2048, 2048), interpolation=cv2.INTER_AREA)
