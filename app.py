@@ -142,7 +142,7 @@ if st.button("Start Processing") and bf_files and pl_files:
             plt.title('Watershed Segmentation')
             plt.axis('off')
             plt.pause(0.001)
-            QApplication.processEvents()  # Refresh PyQt GUI
+            #QApplication.processEvents()  # Refresh PyQt GUI
             #plt.show()
             
             # Further processing and saving
