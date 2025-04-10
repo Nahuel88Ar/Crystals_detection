@@ -229,12 +229,15 @@ if st.button("Start script 1") and bf_files and pl_files:
             binary_B_resized = cv2.resize(binary_B, (2048, 2048), interpolation=cv2.INTER_AREA)
             overlap = (np.logical_and(filtered_binary_A_resized > 0, binary_B_resized > 0)).astype(np.uint8) * 255
 
-            # Save overlap image
-            overlap_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Overlap.png")
-            cv2.imwrite(overlap_path, overlap)
-            st.image(overlap_path, caption=f"Overlap Image for {bf_file.name}", use_column_width=True)
-            # Show in Streamlit
-            st.pyplot(overlap)
+            # Show overlap image using matplotlib (for consistent styling or overlays)
+            fig, ax = plt.subplots(figsize=(8, 8))
+            ax.imshow(cv2.cvtColor(overlap, cv2.COLOR_BGR2RGB))  # Convert BGR to RGB for correct display
+            ax.set_title(f"Overlap Image for {bf_file.name}")
+            ax.axis('off')
+            st.pyplot(fig)
+
+            # Already correct:
+            #st.image(overlap_path, caption=f"Overlap Image for {bf_file.name}", use_column_width=True)
 
             # Clustering and region-cell mapping
             region_to_cell_mapping = []
@@ -499,12 +502,15 @@ if st.button("Start script 2") and bf_files and pl_files:
             binary_B_resized = cv2.resize(binary_B, (2048, 2048), interpolation=cv2.INTER_AREA)
             overlap = (np.logical_and(filtered_binary_A_resized > 0, binary_B_resized > 0)).astype(np.uint8) * 255
 
-            # Save overlap image
-            overlap_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Overlap.png")
-            cv2.imwrite(overlap_path, overlap)
-            st.image(overlap_path, caption=f"Overlap Image for {bf_file.name}", use_column_width=True)
-            # Show in Streamlit
-            st.pyplot(overlap)
+            # Show overlap image using matplotlib (for consistent styling or overlays)
+            fig, ax = plt.subplots(figsize=(8, 8))
+            ax.imshow(cv2.cvtColor(overlap, cv2.COLOR_BGR2RGB))  # Convert BGR to RGB for correct display
+            ax.set_title(f"Overlap Image for {bf_file.name}")
+            ax.axis('off')
+            st.pyplot(fig)
+
+            # Already correct:
+            #st.image(overlap_path, caption=f"Overlap Image for {bf_file.name}", use_column_width=True)
 
             # Clustering and region-cell mapping
             region_to_cell_mapping = []
