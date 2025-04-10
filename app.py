@@ -45,9 +45,9 @@ from scipy.signal import find_peaks
 
 from xlsxwriter import Workbook
 
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QFileDialog, QLabel, QTextEdit
-from PyQt5.QtWidgets import QApplication
-QApplication.processEvents()
+#from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QFileDialog, QLabel, QTextEdit
+#from PyQt5.QtWidgets import QApplication
+#QApplication.processEvents()
 
 # Conversion factor
 PIXEL_TO_UM = 1 / 7.0917
