@@ -1,8 +1,13 @@
 streamlit
 opencv-python-headless
-scikit-image
-matplotlib
-pandas
 numpy
+pandas
+matplotlib
+scikit-image
+scipy
+openpyxl
 xlsxwriter
+
+
+
 
