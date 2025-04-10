@@ -348,7 +348,7 @@ if st.button("Start script 1") and bf_files and pl_files:
             st.success(f"Saved annotated image for {bf_file.name} to {output_dir}")
         st.success("Processing complete!")
         
-if st.button2("Start script 2") and bf_files and pl_files:
+if st.button("Start script 2") and bf_files and pl_files:
     st.write("Starting batch processing...")
     if len(bf_files) != len(pl_files):
         st.error("Mismatch in the number of BF and PL files.")
