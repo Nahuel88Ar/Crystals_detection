@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import os
 import streamlit as st
 import cv2
@@ -273,7 +267,7 @@ if st.button("Start script 1") and bf_files and pl_files:
             df_mapping.to_excel(mapping_excel_path, index=False)
 
             with open(mapping_excel_path, "rb") as g:
-                st.download_button3("Download Crystal dataset", g, file_name=os.path.basename(mapping_excel_path))
+                st.download_button("Download Crystal dataset", g, file_name=os.path.basename(mapping_excel_path))
 
             st.success(f"Saved Crystal dataset for {bf_file.name} to Excel")
             
@@ -380,7 +374,6 @@ if st.button("Start script 2") and bf_files and pl_files:
             if binary_A.shape != grayA.shape:
                 binary_A = resize(binary_A, grayA.shape, order=0, preserve_range=True, anti_aliasing=False)
 
-    
             # Apply the Euclidean Distance Transform for watershed segmentation and helps identify the centers of objects(cells).
             distance = distance_transform_edt(binary_A)
 
@@ -413,7 +406,6 @@ if st.button("Start script 2") and bf_files and pl_files:
             ax.axis('off')
             st.pyplot(fig)
 
-            
             # Further processing and saving
             result_path = os.path.join(output_dir, f"{bf_file.name}_Segmented.png")
             cv2.imwrite(result_path, labels_watershed)
@@ -546,7 +538,7 @@ if st.button("Start script 2") and bf_files and pl_files:
             df_mapping.to_excel(mapping_excel_path, index=False)
 
             with open(mapping_excel_path, "rb") as g:
-                st.download_button3("Download Crystal dataset", g, file_name=os.path.basename(mapping_excel_path))
+                st.download_button("Download Crystal dataset", g, file_name=os.path.basename(mapping_excel_path))
 
             st.success(f"Saved Crystal dataset for {bf_file.name} to Excel")
             
@@ -603,4 +595,3 @@ if st.button("Start script 2") and bf_files and pl_files:
 
             st.success(f"Saved annotated image for {bf_file.name} to {output_dir}")
         st.success("Processing complete!")
-
