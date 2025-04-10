@@ -15,7 +15,8 @@ import matplotlib.pyplot as plt
 import matplotlib
 from io import BytesIO
 import tempfile
-matplotlib.use("Qt5Agg")
+#matplotlib.use("Qt5Agg")
+matplotlib.use("Agg")
 
 from skimage.measure import label, regionprops
 from skimage.filters import threshold_li
