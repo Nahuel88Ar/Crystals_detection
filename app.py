@@ -217,7 +217,7 @@ if st.button("Start script 1") and bf_files and pl_files:
                 region_area_df.to_excel(writer, sheet_name='Cells', index=False)  # Shortened sheet name
                 
                 # Save the original DataFrame (final_grouped_df) to the first sheet
-                merge_df.to_excel(writer, sheet_name='Cells + crystals', index=False)  # Shortened sheet name
+                merged_df.to_excel(writer, sheet_name='Cells + crystals', index=False)  # Shortened sheet name
 
             st.success(f"Saved all datasets for {bf_file.name} to Excel")
     
@@ -415,7 +415,7 @@ if st.button("Start script 2") and bf_files and pl_files:
                 region_area_df.to_excel(writer, sheet_name='Cells', index=False)  # Shortened sheet name
                 
                 # Save the original DataFrame (final_grouped_df) to the first sheet
-                merge_df.to_excel(writer, sheet_name='Cells + crystals', index=False)  # Shortened sheet name
+                merged_df.to_excel(writer, sheet_name='Cells + crystals', index=False)  # Shortened sheet name
 
             st.success(f"Saved all datasets for {bf_file.name} to Excel")
             
