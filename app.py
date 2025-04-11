@@ -216,11 +216,13 @@ if st.button("Start script 1") and bf_files and pl_files:
                 
                 # Save the original DataFrame (final_grouped_df) to the first sheet
                 merge_df.to_excel(writer, sheet_name='Cells + crystals', index=False)  # Shortened sheet name
-                
-            with open(mapping_excel_path, "rb") as g:
-                st.download_button("Download all datasets", g, file_name=os.path.basename(mapping_excel_path))
 
             st.success(f"Saved all datasets for {bf_file.name} to Excel")
+                
+            grouped_xlsx_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_All_Datasets.xlsx")
+            
+            with open(grouped_xlsx_path, "rb") as g:
+                st.download_button("Download all datasets", g, file_name=os.path.basename(grouped_xlsx_path))
 
             annotated_image = imageA.copy()
             for mapping in region_to_cell_mapping:
@@ -412,11 +414,13 @@ if st.button("Start script 2") and bf_files and pl_files:
                 
                 # Save the original DataFrame (final_grouped_df) to the first sheet
                 merge_df.to_excel(writer, sheet_name='Cells + crystals', index=False)  # Shortened sheet name
-                
-            with open(mapping_excel_path, "rb") as g:
-                st.download_button("Download all datasets", g, file_name=os.path.basename(mapping_excel_path))
 
             st.success(f"Saved all datasets for {bf_file.name} to Excel")
+                
+            grouped_xlsx_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_All_Datasets.xlsx")
+            
+            with open(grouped_xlsx_path, "rb") as g:
+                st.download_button("Download all datasets", g, file_name=os.path.basename(grouped_xlsx_path))
 
             annotated_image = imageA.copy()
             for mapping in region_to_cell_mapping:
