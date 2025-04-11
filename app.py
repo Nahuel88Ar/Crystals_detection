@@ -214,6 +214,8 @@ if st.button("Start script 1") and bf_files and pl_files:
             st.success(f"Saved Crystal dataset for {bf_file.name} to Excel")
             
             merged_df = df_mapping.merge(region_area_df, left_on="Associated_Cell", right_on="Region_Label", how="inner")
+
+            grouped_xlsx_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_All_Datasets.xlsx")
             
             # Saving to an Excel file with multiple sheets
             with pd.ExcelWriter(grouped_xlsx_path, engine='xlsxwriter') as writer:
@@ -228,8 +230,6 @@ if st.button("Start script 1") and bf_files and pl_files:
 
             st.success(f"Saved all datasets for {bf_file.name} to Excel")
                 
-            grouped_xlsx_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_All_Datasets.xlsx")
-            
             with open(grouped_xlsx_path, "rb") as g:
                 st.download_button("Download all datasets", g, file_name=os.path.basename(grouped_xlsx_path))
 
@@ -421,6 +421,8 @@ if st.button("Start script 2") and bf_files and pl_files:
             st.success(f"Saved Crystal dataset for {bf_file.name} to Excel")
             
             merged_df = df_mapping.merge(region_area_df, left_on="Associated_Cell", right_on="Region_Label", how="inner")
+
+            grouped_xlsx_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_All_Datasets.xlsx")
             
             # Saving to an Excel file with multiple sheets
             with pd.ExcelWriter(grouped_xlsx_path, engine='xlsxwriter') as writer:
@@ -434,8 +436,6 @@ if st.button("Start script 2") and bf_files and pl_files:
                 merged_df.to_excel(writer, sheet_name='Cells + crystals', index=False)  # Shortened sheet name
 
             st.success(f"Saved all datasets for {bf_file.name} to Excel")
-                
-            grouped_xlsx_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_All_Datasets.xlsx")
             
             with open(grouped_xlsx_path, "rb") as g:
                 st.download_button("Download all datasets", g, file_name=os.path.basename(grouped_xlsx_path))
