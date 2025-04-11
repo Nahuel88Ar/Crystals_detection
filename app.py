@@ -132,7 +132,7 @@ if st.button("Start script 1") and bf_files and pl_files:
             excel_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Region_Area_in_um2.xlsx")
             region_area_df.to_excel(excel_path, index=False)
 
-            st.success(f"Saved region areas for {bf_file.name} to Excel")
+            st.success(f"Saved cells area for {bf_file.name} to Excel")
             with open(excel_path, "rb") as f:
                 st.download_button("Download dataset of cells", f, file_name=os.path.basename(excel_path))
 
@@ -312,7 +312,7 @@ if st.button("Start script 2") and bf_files and pl_files:
             excel_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Region_Area_in_um2.xlsx")
             region_area_df.to_excel(excel_path, index=False)
 
-            st.success(f"Saved region areas for {bf_file.name} to Excel")
+            st.success(f"Saved cells area for {bf_file.name} to Excel")
             with open(excel_path, "rb") as f:
                 st.download_button("Download dataset of cells", f, file_name=os.path.basename(excel_path))
 
