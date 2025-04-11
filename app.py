@@ -199,6 +199,12 @@ if st.button("Start script 1") and bf_files and pl_files:
             df_mapping = pd.DataFrame(region_to_cell_mapping)
             df_mapping = df_mapping[df_mapping["Region_Area (µm²)"] > 0]
 
+            # Add additional stats to the DataFrame
+            df_mapping["Associated_Cell_Count"] = df_mapping["Associated_Cell"].map(df_mapping["Associated_Cell"].value_counts())
+            total_distinct_cells = df_mapping["Associated_Cell"].nunique()
+            df_mapping["Total_Distinct_Cells"] = total_distinct_cells
+            df_mapping.loc["Total", "Region_Area (µm²)"] = df_mapping["Region_Area (µm²)"].sum()
+
             mapping_excel_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Region_Cell_Mapping.xlsx")
             df_mapping.to_excel(mapping_excel_path, index=False)
 
@@ -396,6 +402,12 @@ if st.button("Start script 2") and bf_files and pl_files:
 
             df_mapping = pd.DataFrame(region_to_cell_mapping)
             df_mapping = df_mapping[df_mapping["Region_Area (µm²)"] > 0]
+
+            # Add additional stats to the DataFrame
+            df_mapping["Associated_Cell_Count"] = df_mapping["Associated_Cell"].map(df_mapping["Associated_Cell"].value_counts())
+            total_distinct_cells = df_mapping["Associated_Cell"].nunique()
+            df_mapping["Total_Distinct_Cells"] = total_distinct_cells
+            df_mapping.loc["Total", "Region_Area (µm²)"] = df_mapping["Region_Area (µm²)"].sum()
 
             mapping_excel_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Region_Cell_Mapping.xlsx")
             df_mapping.to_excel(mapping_excel_path, index=False)
