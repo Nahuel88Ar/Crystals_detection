@@ -196,14 +196,29 @@ if st.button("Start script 1") and bf_files and pl_files:
                     "Region_Area (µm²)": region.area * (PIXEL_TO_UM ** 2)
                 })
 
-            df_mapping = pd.DataFrame(region_to_cell_mapping)
-            df_mapping = df_mapping[df_mapping["Region_Area (µm²)"] > 0]
+            df_mapp = pd.DataFrame(region_to_cell_mapping)
             
-            # Add additional stats to the DataFrame
-            df_mapping["Associated_Cell_Count"] = df_mapping["Associated_Cell"].map(df_mapping["Associated_Cell"].value_counts())
-            total_distinct_cells = df_mapping["Associated_Cell"].nunique()
-            df_mapping["Total_Distinct_Cells"] = total_distinct_cells
+            # First, drop any rows with NaN in Associated_Cell to avoid counting issues
+            df_mapping = df_mapp[df_mapp["Region_Area (µm²)"] > 0].copy()
+            df_mapping = df_mapping[df_mapping["Associated_Cell"].notnull()]
+            
+            # Ensure Associated_Cell is of type int (in case it's float due to NaNs)
+            df_mapping["Associated_Cell"] = df_mapping["Associated_Cell"].astype(int)
+
+            # Now compute the count
+            associated_cell_counts = df_mapping["Associated_Cell"].value_counts()
+
+            # Map it back to the DataFrame
+            df_mapping["Associated_Cell_Count"] = df_mapping["Associated_Cell"].map(associated_cell_counts)
+
+            # Add total distinct cells
+            df_mapping["Total_Distinct_Cells"] = df_mapping["Associated_Cell"].nunique()
+
+            # Total row
             df_mapping.loc["Total", "Region_Area (µm²)"] = df_mapping["Region_Area (µm²)"].sum()
+
+            mapping_excel_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Region_Cell_Mapping.xlsx")
+            df_mapping.to_excel(mapping_excel_path, index=False)
 
             mapping_excel_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Region_Cell_Mapping.xlsx")
             df_mapping.to_excel(mapping_excel_path, index=False)
@@ -212,6 +227,8 @@ if st.button("Start script 1") and bf_files and pl_files:
             #    st.download_button("Download Crystal dataset", g, file_name=os.path.basename(mapping_excel_path))
 
             st.success(f"Saved Crystal dataset for {bf_file.name} to Excel")
+
+            region_area_df["Region_Label"] = region_area_df["Region_Label"].astype(int)
             
             merged_df = df_mapping.merge(region_area_df, left_on="Associated_Cell", right_on="Region_Label", how="inner")
 
