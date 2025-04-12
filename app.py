@@ -416,7 +416,7 @@ if st.button("Start script 2") and bf_files and pl_files:
                     "Associated_Cell": best_match_cell,
                     "Overlap (pixels)": max_overlap,
                     "Region_Area (pixels)": region.area,
-                    "Region_Area (µm²)": region.area * (pixel_to_um ** 2)
+                    "Region_Area (µm²)": region.area * (PIXEL_TO_UM ** 2)
                 })
 
             # Create and clean DataFrame
