@@ -228,6 +228,10 @@ if st.button("Start script 1") and bf_files and pl_files:
 
             st.success(f"Saved Crystal dataset for {bf_file.name} to Excel")
 
+            #NEW
+            # Drop any rows where Region_Label is not a digit (e.g., "Total")
+            region_area_df = region_area_df[region_area_df["Region_Label"].apply(lambda x: str(x).isdigit())].copy()
+
             region_area_df["Region_Label"] = region_area_df["Region_Label"].astype(int)
             
             merged_df = df_mapping.merge(region_area_df, left_on="Associated_Cell", right_on="Region_Label", how="inner")
