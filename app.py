@@ -206,9 +206,10 @@ if st.button("Start script 1") and bf_files and pl_files:
                 })
 
             # --- Create and clean DataFrame ---
-            df_mapping = pd.DataFrame(crystal_to_cell)
-            df_mapping = df_mapping[df_mapping["Region_Area (µm²)"] < 5]
-            df_mapping = df_mapping[df_mapping["Overlap (pixels)"] > 0]
+            df_mapp = pd.DataFrame(crystal_to_cell)
+            #df_mapping = df_mapping[df_mapping["Region_Area (µm²)"] < 5]
+            #df_mapping = df_mapping[df_mapping["Overlap (pixels)"] > 0]
+            df_mapping = df_mapp[(df_mapping["Region_Area (µm²)"] < 5) & (df_mapp["Overlap (pixels)"] > 0)]
 
             # --- Properly count how many crystals are mapped to each cell ---
             df_mapping["Associated_Cell_Count"] = df_mapping["Associated_Cell"].map(df_mapping["Associated_Cell"].value_counts())
