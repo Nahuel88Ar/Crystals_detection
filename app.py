@@ -179,6 +179,7 @@ if st.button("Start script 1") and bf_files and pl_files:
             cell_to_crystals = defaultdict(list)
             region_labels = label(overlap)
             region_props = regionprops(region_labels)
+            cell_props = region_props_A  # Add this line
 
             for region in region_props:  # Crystal regions from PL image
                 region_coords = set(map(tuple, region.coords))
