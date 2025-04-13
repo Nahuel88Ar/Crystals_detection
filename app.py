@@ -494,7 +494,7 @@ if st.button("Start script 2") and bf_files and pl_files:
                 region_area_df.to_excel(writer, sheet_name='Cells', index=False)  # Shortened sheet name
                 
                 # Save the DataFrame (df_mapping) to the second sheet
-                df_mapping_with_total.to_excel(writer, sheet_name='Crystals', index=False)  # Shortened sheet name
+                df_mapping.to_excel(writer, sheet_name='Crystals', index=False)  # Shortened sheet name
                 
                 # Save the DataFrame (merged_df) to the thitd sheet
                 merged_df.to_excel(writer, sheet_name='Cells + crystals', index=False)  # Shortened sheet name
