@@ -51,14 +51,13 @@ import zipfile
 PIXEL_TO_UM = 1 / 7.0917
 
 st.title("Batch Image Processing App (Streamlit Version)")
-"""
+
 # File uploader for BF and PL folders
 bf_files = st.file_uploader("Upload BF images (.tif)", type=["tif"], accept_multiple_files=True)
 pl_files = st.file_uploader("Upload PL images (.tif)", type=["tif"], accept_multiple_files=True)
 
-output_dir = st.text_input("Output folder (locally)", value="outputs")
-os.makedirs(output_dir, exist_ok=True)
-"""
+#output_dir = st.text_input("Output folder (locally)", value="outputs")
+#os.makedirs(output_dir, exist_ok=True)
 
 # Set a base directory for storing outputs (in temp dir or project dir)
 base_output_dir = tempfile.gettempdir()  # or use a fixed one like "app_outputs"
