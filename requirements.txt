@@ -1,0 +1,13 @@
+streamlit
+opencv-python-headless
+numpy
+pandas
+matplotlib
+scikit-image
+scipy
+openpyxl
+xlsxwriter
+
+
+
+
