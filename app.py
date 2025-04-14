@@ -282,13 +282,13 @@ if st.button("Start script 1") and bf_files and pl_files:
 
             # Drop duplicates based on the relevant column ('Associated_Cell' / 'Region_Label') 
             # and then sum the unique values for each column
-            unique_x_area_sum = merged_df["Region_Area (µm²)_x"].sum()
-            unique_y_area_sum = merged_df["Region_Area (µm²)_y"].drop_duplicates().sum()
+            #unique_x_area_sum = merged_df["Region_Area (µm²)_x"].sum()
+            #unique_y_area_sum = merged_df["Region_Area (µm²)_y"].drop_duplicates().sum()
             
-            total_row_merge = ["","","","Total Area Crystals", unique_x_area_sum,"","","","Total Area Cells",unique_y_area_sum]
+            #total_row_merge = ["","","","Total Area Crystals", unique_x_area_sum,"","","","Total Area Cells",unique_y_area_sum]
             
             # Insert the total row at the end with index "Total"
-            merged_df.loc["Total"] = total_row_merge
+            #merged_df.loc["Total"] = total_row_merge
 
             # --- Save all datasets to Excel ---
             grouped_xlsx_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_All_Datasets.xlsx")
