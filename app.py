@@ -256,7 +256,7 @@ if st.button("Start script 1") and bf_files and pl_files:
 
             # --- Add total number of distinct cells ---
             total_distinct_cells = df_mapping["Associated_Cell"].nunique()
-            df_mapping["Total_Distinct_Cells"] = total_distinct_cells
+            df_mapping["Total_Cells_with_crystals"] = total_distinct_cells
             total_area = df_mapping["Region_Area (µm²)"].sum()
             total_row = ["","","","Total Area Crystals", total_area,"",""]
             
@@ -550,7 +550,7 @@ if st.button("Start script 2") and bf_files and pl_files:
 
             # --- Add total number of distinct cells ---
             total_distinct_cells = df_mapping["Associated_Cell"].nunique()
-            df_mapping["Total_Distinct_Cells"] = total_distinct_cells
+            df_mapping["Total_Cells_with_crystals"] = total_distinct_cells
             total_area = df_mapping["Region_Area (µm²)"].sum()
             total_row = ["","","","Total Area Crystals", total_area,"",""]
             
