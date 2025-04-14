@@ -290,16 +290,6 @@ if st.button("Start script 1") and bf_files and pl_files:
             # Insert the total row at the end with index "Total"
             merged_df.loc["Total"] = total_row_merge
 
-            # Add the totals to the DataFrame (if needed)
-            merged_df.loc["Total Area Crystals", "Region_Area (µm²)_x"] = unique_x_area_sum
-            merged_df.loc["Total Area Cells", "Region_Area (µm²)_y"] = unique_y_area_sum
-            #merged_df.loc["Total Area Crystals", "Region_Area (µm²)_x"] = ["Total Area Crystals", unique_x_area_sum]
-            #merged_df.loc["Total Area Cells", "Region_Area (µm²)_y"] = ["Total Area Cells", unique_y_area_sum]
-
-            # Optionally, display the totals
-            #st.write(f"Total Area Crystals(µm²): {unique_x_area_sum}")
-            #st.write(f"Total Area Cells (µm²): {unique_y_area_sum}")
-            
             # --- Save all datasets to Excel ---
             grouped_xlsx_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_All_Datasets.xlsx")
 
