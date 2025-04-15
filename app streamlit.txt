@@ -1,0 +1,5 @@
+- En el script 2 filtrar el dataset de BF para eliminar la detección en la barra del borde derecho inferior.
+- Podes elegir la carpeta de descarga.
+- Cuando presiono descargar datasets o imágenes que no se me desaparezca toda la información en pantalla.
+- En el dataset de cristales comienza en 2 y no en 1.
+- Hace cambios a los datasets para script 1 muestre en relación a cantidad de cristales y el script 2 en relación al area de los cristales.
