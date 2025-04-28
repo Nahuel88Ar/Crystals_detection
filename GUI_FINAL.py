@@ -650,7 +650,7 @@ class ImageProcessingApp(QWidget):
             std_intensity = np.std(grayB)
             
             #ORIGINAL WITH VALUE 4
-            dynamic_threshold = mean_intensity + 5 * std_intensity
+            dynamic_threshold = mean_intensity + 4.5 * std_intensity
       
             # Apply dynamic threshold
             binary_B = (grayB > dynamic_threshold).astype(np.uint8)
@@ -713,7 +713,7 @@ class ImageProcessingApp(QWidget):
 
             # Save region-to-cell mapping as CSV
             df_mapp = pd.DataFrame(region_to_cell_mapping)
-            df_mapping = df_mapp[(df_mapp["Region_Area (µm²)"] < 5) & (df_mapp["Overlap (pixels)"] > 0)]
+            df_mapping = df_mapp[(df_mapp["Region_Area (µm²)"] < 10) & (df_mapp["Overlap (pixels)"] > 0)]
 
             # --- Properly count how many crystals are mapped to each cell ---
             df_mapping["Associated_Cell_Count"] = df_mapping["Associated_Cell"].map(df_mapping["Associated_Cell"].value_counts())
