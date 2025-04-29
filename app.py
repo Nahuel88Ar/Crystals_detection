@@ -478,7 +478,7 @@ if st.button("Start script 2") and bf_files and pl_files:
             grayB = cv2.bilateralFilter((grayB * 255).astype(np.uint8), 9, 75, 75)
             mean_intensity = np.mean(grayB)
             std_intensity = np.std(grayB)
-            dynamic_threshold = mean_intensity + 4.5 * std_intensity
+            dynamic_threshold = mean_intensity + 5.5 * std_intensity
             binary_B = (grayB > dynamic_threshold).astype(np.uint8)
 
             fig, ax = plt.subplots(figsize=(8, 6))
