@@ -650,7 +650,7 @@ class ImageProcessingApp(QWidget):
             std_intensity = np.std(grayB)
             
             #ORIGINAL WITH VALUE 4
-            dynamic_threshold = mean_intensity + 4.5 * std_intensity
+            dynamic_threshold = mean_intensity + 5.5 * std_intensity
       
             # Apply dynamic threshold
             binary_B = (grayB > dynamic_threshold).astype(np.uint8)
