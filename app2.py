@@ -787,7 +787,7 @@ if st.session_state.script2_results:
 
 # Optional Reset
 if st.button("🔁 Reset", key="reset_button_2"):
-    for key in ["script2_done", "script2_results", "zip_path_2"]:
+    for key2 in ["script2_done", "script2_results", "zip_path_2"]:
         if key2 in st.session_state:
             del st.session_state[key2]
     st.session_state.script2_done = False
