@@ -396,13 +396,13 @@ if st.session_state.script1_results:
 
     for idx, result1 in enumerate(st.session_state.script1_results):
         st.subheader(f"📁 {result1['bf_name']}")
-        st.image(result1["annotated_img_path"], caption="Annotated Image")
-        st.image(result1["overlap_path"], caption="Overlap Image")
+        #st.image(result1["annotated_img_path"], caption="Annotated Image")
+        #st.image(result1["overlap_path"], caption="Overlap Image")
 
-        if result1.get("hist_path_A"):
-            st.image(result1["hist_path_A"], caption="Histogram A")
-        if result1.get("hist_path_B"):
-            st.image(result1["hist_path_B"], caption="Histogram B")
+        #if result1.get("hist_path_A"):
+        #    st.image(result1["hist_path_A"], caption="Histogram A")
+        #if result1.get("hist_path_B"):
+        #    st.image(result1["hist_path_B"], caption="Histogram B")
 
         with open(result1["excel_path"], "rb") as f1:
             st.download_button(
@@ -421,9 +421,9 @@ if st.session_state.script1_results:
         )
 
 # Optional Reset
-#if st.button("🔁 Reset", key="reset_button_1"):
-#    st.session_state.script1_done = False
-#    st.session_state.script1_results.clear()
+if st.button("🔁 Reset", key="reset_button_1"):
+    st.session_state.script1_done = False
+    st.session_state.script1_results.clear()
 #    st.experimental_rerun()
 #---------------------------------------------SCRIPT 2--------------------------------------------------------------------------------------------------#
 
@@ -750,13 +750,13 @@ if st.session_state.script2_results:
 
     for idx, result2 in enumerate(st.session_state.script2_results):
         st.subheader(f"📁 {result2['bf_name']}")
-        st.image(result2["annotated_img_path"], caption="Annotated Image")
-        st.image(result2["overlap_path"], caption="Overlap Image")
+        #st.image(result2["annotated_img_path"], caption="Annotated Image")
+        #st.image(result2["overlap_path"], caption="Overlap Image")
 
-        if result2.get("hist_path_A"):
-            st.image(result2["hist_path_A"], caption="Histogram A")
-        if result2.get("hist_path_B"):
-            st.image(result2["hist_path_B"], caption="Histogram B")
+        #if result2.get("hist_path_A"):
+        #    st.image(result2["hist_path_A"], caption="Histogram A")
+        #if result2.get("hist_path_B"):
+        #    st.image(result2["hist_path_B"], caption="Histogram B")
 
         with open(result2["excel_path"], "rb") as f2:
             st.download_button(
@@ -775,7 +775,7 @@ if st.session_state.script2_results:
         )
 
 # Optional Reset
-#if st.button("🔁 Reset", key="reset_button_2"):
-#    st.session_state.script2_done = False
-#    st.session_state.script2_results.clear()
+if st.button("🔁 Reset", key="reset_button_2"):
+    st.session_state.script2_done = False
+    st.session_state.script2_results.clear()
 #    st.experimental_rerun()
