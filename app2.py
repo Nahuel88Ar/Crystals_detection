@@ -374,30 +374,41 @@ if st.session_state.script1_done:
             zipf.write(file_path, arcname=os.path.basename(file_path))
     st.session_state.zip_path_1 = zip_path_1
     st.success("✅ Processing complete!")
-
-# Display Outputs and Download Buttons
+    
 if st.session_state.script1_results:
     st.header("📦 Results")
 
-    for result1 in st.session_state.script1_results:
+    for idx, result1 in enumerate(st.session_state.script1_results):
         st.subheader(f"📁 {result1['bf_name']}")
         st.image(result1["annotated_img_path"], caption="Annotated Image")
         st.image(result1["overlap_path"], caption="Overlap Image")
-        st.image(result1["hist_path_A"], caption="Histogram A")
-        st.image(result1["hist_path_B"], caption="Histogram B")
+
+        if result1.get("hist_path_A"):
+            st.image(result1["hist_path_A"], caption="Histogram A")
+        if result1.get("hist_path_B"):
+            st.image(result1["hist_path_B"], caption="Histogram B")
 
         with open(result1["excel_path"], "rb") as f1:
-            st.download_button("📊 Download Dataset", f1, file_name=os.path.basename(result["excel_path"]))
+            st.download_button(
+                "📊 Download Dataset",
+                f1,
+                file_name=os.path.basename(result1["excel_path"]),
+                key=f"download_dataset_{idx}"
+            )
 
     with open(st.session_state.zip_path_1, "rb") as zf1:
-        st.download_button("🗂️ Download All Images and Histograms", zf1, file_name="All_Images_histograms.zip")
+        st.download_button(
+            "🗂️ Download All Images and Histograms",
+            zf1,
+            file_name="All_Images_histograms.zip",
+            key="download_all_zip"
+        )
 
 # Optional Reset
-if st.button("🔁 Reset",key="reset_button_1"):
+if st.button("🔁 Reset", key="reset_button_1"):
     st.session_state.script1_done = False
     st.session_state.script1_results.clear()
     st.experimental_rerun()
-
 #---------------------------------------------SCRIPT 2--------------------------------------------------------------------------------------------------#
 
 # Session State Initialization
@@ -718,26 +729,37 @@ if st.session_state.script2_done:
     st.session_state.zip_path_2 = zip_path_2
     st.success("✅ Processing complete!")
 
-# Display Outputs and Download Buttons
 if st.session_state.script2_results:
     st.header("📦 Results")
 
-    for result2 in st.session_state.script2_results:
+    for idx, result2 in enumerate(st.session_state.script2_results):
         st.subheader(f"📁 {result2['bf_name']}")
         st.image(result2["annotated_img_path"], caption="Annotated Image")
         st.image(result2["overlap_path"], caption="Overlap Image")
-        st.image(result2["hist_path_A"], caption="Histogram A")
-        st.image(result2["hist_path_B"], caption="Histogram B")
+
+        if result2.get("hist_path_A"):
+            st.image(result2["hist_path_A"], caption="Histogram A")
+        if result2.get("hist_path_B"):
+            st.image(result2["hist_path_B"], caption="Histogram B")
 
         with open(result2["excel_path"], "rb") as f2:
-            st.download_button("📊 Download Dataset", f2, file_name=os.path.basename(result["excel_path"]))
+            st.download_button(
+                "📊 Download Dataset",
+                f2,
+                file_name=os.path.basename(result2["excel_path"]),
+                key=f"download_dataset_{idx}"
+            )
 
     with open(st.session_state.zip_path_2, "rb") as zf2:
-        st.download_button("🗂️ Download All Images and Histograms", zf2, file_name="All_Images_histograms.zip")
+        st.download_button(
+            "🗂️ Download All Images and Histograms",
+            zf2,
+            file_name="All_Images_histograms.zip",
+            key="download_all_zip"
+        )
 
 # Optional Reset
-if st.button("🔁 Reset",key="reset_button_2"):
+if st.button("🔁 Reset", key="reset_button_2"):
     st.session_state.script2_done = False
     st.session_state.script2_results.clear()
     st.experimental_rerun()
-
