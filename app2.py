@@ -393,7 +393,7 @@ if st.session_state.script1_results:
                 "📊 Download Dataset",
                 f1,
                 file_name=os.path.basename(result1["excel_path"]),
-                key=f"download_dataset_{idx}"
+                key=f"download_dataset_{idx}_1"
             )
 
     with open(st.session_state.zip_path_1, "rb") as zf1:
@@ -401,7 +401,7 @@ if st.session_state.script1_results:
             "🗂️ Download All Images and Histograms",
             zf1,
             file_name="All_Images_histograms.zip",
-            key="download_all_zip"
+            key="download_all_zip_1"
         )
 
 # Optional Reset
@@ -712,7 +712,7 @@ if st.session_state.script2_done:
         all_output_files.append(annotated_image_path)
 
         # Save session result
-        st.session_state.script1_results.append({
+        st.session_state.script2_results.append({
             "bf_name": bf_file.name,
             "excel_path": grouped_xlsx_path,
             "annotated_img_path": annotated_image_path,
@@ -747,7 +747,7 @@ if st.session_state.script2_results:
                 "📊 Download Dataset",
                 f2,
                 file_name=os.path.basename(result2["excel_path"]),
-                key=f"download_dataset_{idx}"
+                key=f"download_dataset_{idx}_2"
             )
 
     with open(st.session_state.zip_path_2, "rb") as zf2:
@@ -755,7 +755,7 @@ if st.session_state.script2_results:
             "🗂️ Download All Images and Histograms",
             zf2,
             file_name="All_Images_histograms.zip",
-            key="download_all_zip"
+            key="download_all_zip_2"
         )
 
 # Optional Reset
