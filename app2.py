@@ -425,8 +425,6 @@ if st.button("🔁 Reset", key="reset_button_1"):
     for key1 in ["script1_done", "script1_results", "zip_path_1"]:
         if key1 in st.session_state:
             del st.session_state[key1]
-    st.session_state.script1_done = False
-    st.session_state.script1_results.clear()
     st.experimental_rerun()
 # Early stop if reset just happened (after rerun)
 if "script1_done" not in st.session_state:
@@ -790,8 +788,6 @@ if st.button("🔁 Reset", key="reset_button_2"):
     for key2 in ["script2_done", "script2_results", "zip_path_2"]:
         if key2 in st.session_state:
             del st.session_state[key2]
-    st.session_state.script2_done = False
-    st.session_state.script2_results.clear()
     st.experimental_rerun()
 # Early stop if reset just happened (after rerun)
 if "script2_done" not in st.session_state:
