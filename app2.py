@@ -393,7 +393,7 @@ if st.session_state.script1_results:
         st.download_button("🗂️ Download All Images and Histograms", zf1, file_name="All_Images_histograms.zip")
 
 # Optional Reset
-if st.button("🔁 Reset"):
+if st.button("🔁 Reset",key="reset_button"):
     st.session_state.script1_done = False
     st.session_state.script1_results.clear()
     st.experimental_rerun()
@@ -736,7 +736,7 @@ if st.session_state.script2_results:
         st.download_button("🗂️ Download All Images and Histograms", zf2, file_name="All_Images_histograms.zip")
 
 # Optional Reset
-if st.button("🔁 Reset"):
+if st.button("🔁 Reset",key="reset_button"):
     st.session_state.script2_done = False
     st.session_state.script2_results.clear()
     st.experimental_rerun()
