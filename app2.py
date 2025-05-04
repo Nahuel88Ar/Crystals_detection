@@ -65,6 +65,13 @@ if "script1_results" not in st.session_state:
 if "zip_path_1" not in st.session_state:
     st.session_state.zip_path_1 = None
 
+if "script2_done" not in st.session_state:
+    st.session_state.script2_done = False
+if "script2_results" not in st.session_state:
+    st.session_state.script2_results = []
+if "zip_path_2" not in st.session_state:
+    st.session_state.zip_path_2 = None
+
 # Start Button
 if st.button("Start script 1"):
     if not bf_files or not pl_files:
@@ -74,6 +81,15 @@ if st.button("Start script 1"):
     else:
         st.session_state.script1_done = True
         st.session_state.script1_results.clear()
+
+if st.button("Start script 2"):
+    if not bf_files or not pl_files:
+        st.warning("Please upload both BF and PL files.")
+    elif len(bf_files) != len(pl_files):
+        st.error("Mismatch in number of BF and PL files.")
+    else:
+        st.session_state.script2_done = True
+        st.session_state.script2_results.clear()
 
 # Processing Logic
 if st.session_state.script1_done:
@@ -412,22 +428,22 @@ if st.button("🔁 Reset", key="reset_button_1"):
 #---------------------------------------------SCRIPT 2--------------------------------------------------------------------------------------------------#
 
 # Session State Initialization
-if "script2_done" not in st.session_state:
-    st.session_state.script2_done = False
-if "script2_results" not in st.session_state:
-    st.session_state.script2_results = []
-if "zip_path_2" not in st.session_state:
-    st.session_state.zip_path_2 = None
+#if "script2_done" not in st.session_state:
+#    st.session_state.script2_done = False
+#if "script2_results" not in st.session_state:
+#    st.session_state.script2_results = []
+#if "zip_path_2" not in st.session_state:
+#    st.session_state.zip_path_2 = None
 
 # Start Button
-if st.button("Start script 2"):
-    if not bf_files or not pl_files:
-        st.warning("Please upload both BF and PL files.")
-    elif len(bf_files) != len(pl_files):
-        st.error("Mismatch in number of BF and PL files.")
-    else:
-        st.session_state.script2_done = True
-        st.session_state.script2_results.clear()
+#if st.button("Start script 2"):
+#    if not bf_files or not pl_files:
+#        st.warning("Please upload both BF and PL files.")
+#    elif len(bf_files) != len(pl_files):
+#        st.error("Mismatch in number of BF and PL files.")
+#    else:
+#        st.session_state.script2_done = True
+#        st.session_state.script2_results.clear()
 
 # Processing Logic
 if st.session_state.script2_done:
