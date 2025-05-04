@@ -421,10 +421,10 @@ if st.session_state.script1_results:
         )
 
 # Optional Reset
-if st.button("🔁 Reset", key="reset_button_1"):
-    st.session_state.script1_done = False
-    st.session_state.script1_results.clear()
-    st.experimental_rerun()
+#if st.button("🔁 Reset", key="reset_button_1"):
+#    st.session_state.script1_done = False
+#    st.session_state.script1_results.clear()
+#    st.experimental_rerun()
 #---------------------------------------------SCRIPT 2--------------------------------------------------------------------------------------------------#
 
 # Session State Initialization
@@ -775,7 +775,7 @@ if st.session_state.script2_results:
         )
 
 # Optional Reset
-if st.button("🔁 Reset", key="reset_button_2"):
-    st.session_state.script2_done = False
-    st.session_state.script2_results.clear()
-    st.experimental_rerun()
+#if st.button("🔁 Reset", key="reset_button_2"):
+#    st.session_state.script2_done = False
+#    st.session_state.script2_results.clear()
+#    st.experimental_rerun()
