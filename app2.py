@@ -380,7 +380,7 @@ if st.session_state.script1_results:
     st.header("📦 Results")
 
     for result1 in st.session_state.script1_results:
-        st.subheader(f"📁 {result['bf_name']}")
+        st.subheader(f"📁 {result1['bf_name']}")
         st.image(result1["annotated_img_path"], caption="Annotated Image")
         st.image(result1["overlap_path"], caption="Overlap Image")
         st.image(result1["hist_path_A"], caption="Histogram A")
@@ -723,7 +723,7 @@ if st.session_state.script2_results:
     st.header("📦 Results")
 
     for result2 in st.session_state.script2_results:
-        st.subheader(f"📁 {result['bf_name']}")
+        st.subheader(f"📁 {result2['bf_name']}")
         st.image(result2["annotated_img_path"], caption="Annotated Image")
         st.image(result2["overlap_path"], caption="Overlap Image")
         st.image(result2["hist_path_A"], caption="Histogram A")
