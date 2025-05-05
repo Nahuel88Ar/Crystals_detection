@@ -250,7 +250,7 @@ if st.session_state.script1_results:
         st.image(result1["overlap_path"], caption="Overlap Image")
 
         with open(result1["excel_path"], "rb") as f1:
-            st.download_button("📊 Download Dataset", f1, file_name=os.path.basename(result1["excel_path"]))
+            st.download_button("📊 Download Dataset", f1, file_name=os.path.basename(result1["excel_path"]),key=f"download_button_{os.path.basename(result1['excel_path'])}")
 
         #with open(result1["hist_A_path"], "rb") as f1:
         #    st.download_button("📈 Download Histogram A", f1, file_name=os.path.basename(result1["hist_A_path"]))
@@ -459,7 +459,7 @@ if st.session_state.script2_results:
         st.image(result2["overlap_path"], caption="Overlap Image")
 
         with open(result2["excel_path"], "rb") as f2:
-            st.download_button("📊 Download Dataset", f2, file_name=os.path.basename(result2["excel_path"]))
+            st.download_button("📊 Download Dataset", f2, file_name=os.path.basename(result2["excel_path"]),key=f"download_button_{os.path.basename(result2['excel_path'])}")
 
         #with open(result2["hist_A_path"], "rb") as f2:
         #    st.download_button("📈 Download Histogram A", f2, file_name=os.path.basename(result2["hist_A_path"]))
