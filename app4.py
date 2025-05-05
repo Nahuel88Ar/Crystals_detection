@@ -252,11 +252,11 @@ if st.session_state.script1_results:
         with open(result1["excel_path"], "rb") as f1:
             st.download_button("📊 Download Dataset", f1, file_name=os.path.basename(result1["excel_path"]))
 
-        with open(result1["hist_A_path"], "rb") as f1:
-            st.download_button("📈 Download Histogram A", f1, file_name=os.path.basename(result1["hist_A_path"]))
+        #with open(result1["hist_A_path"], "rb") as f1:
+        #    st.download_button("📈 Download Histogram A", f1, file_name=os.path.basename(result1["hist_A_path"]))
 
-        with open(result1["hist_B_path"], "rb") as f1:
-            st.download_button("📉 Download Histogram B", f1, file_name=os.path.basename(result1["hist_B_path"]))
+        #with open(result1["hist_B_path"], "rb") as f1:
+        #    st.download_button("📉 Download Histogram B", f1, file_name=os.path.basename(result1["hist_B_path"]))
 
     with open(st.session_state.zip_path_1, "rb") as zf_1:
         st.download_button("🗂️ Download All Images and Histograms", zf_1, file_name="All_Images_histograms.zip")
@@ -461,11 +461,11 @@ if st.session_state.script2_results:
         with open(result2["excel_path"], "rb") as f2:
             st.download_button("📊 Download Dataset", f2, file_name=os.path.basename(result2["excel_path"]))
 
-        with open(result2["hist_A_path"], "rb") as f2:
-            st.download_button("📈 Download Histogram A", f2, file_name=os.path.basename(result2["hist_A_path"]))
+        #with open(result2["hist_A_path"], "rb") as f2:
+        #    st.download_button("📈 Download Histogram A", f2, file_name=os.path.basename(result2["hist_A_path"]))
 
-        with open(result2["hist_B_path"], "rb") as f2:
-            st.download_button("📉 Download Histogram B", f2, file_name=os.path.basename(result2["hist_B_path"]))
+        #with open(result2["hist_B_path"], "rb") as f2:
+        #    st.download_button("📉 Download Histogram B", f2, file_name=os.path.basename(result2["hist_B_path"]))
 
     with open(st.session_state.zip_path_2, "rb") as zf_2:
         st.download_button("🗂️ Download All Images and Histograms", zf_2, file_name="All_Images_histograms.zip")
