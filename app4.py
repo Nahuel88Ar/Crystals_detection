@@ -48,8 +48,8 @@ from collections import defaultdict
 import zipfile
 
 # === File Inputs ===
-bf_files = st.file_uploader("Upload BF files", type=["png", "jpg"], accept_multiple_files=True)
-pl_files = st.file_uploader("Upload PL files", type=["png", "jpg"], accept_multiple_files=True)
+bf_files = st.file_uploader("Upload BF files", type=["png", "jpg","tif"], accept_multiple_files=True)
+pl_files = st.file_uploader("Upload PL files", type=["png", "jpg","tif"], accept_multiple_files=True)
 output_dir = "outputs"
 PIXEL_TO_UM = 1 / 7.0917  # Example pixel-to-micron conversion
 os.makedirs(output_dir, exist_ok=True)
