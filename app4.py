@@ -461,10 +461,10 @@ if st.session_state.script2_results:
         with open(result2["excel_path"], "rb") as f2:
             st.download_button("📊 Download Dataset", f2, file_name=os.path.basename(result2["excel_path"]))
 
-        with open(result2["hist_A_path"], "rb") as f1:
+        with open(result2["hist_A_path"], "rb") as f2:
             st.download_button("📈 Download Histogram A", f2, file_name=os.path.basename(result2["hist_A_path"]))
 
-        with open(result2["hist_B_path"], "rb") as f1:
+        with open(result2["hist_B_path"], "rb") as f2:
             st.download_button("📉 Download Histogram B", f2, file_name=os.path.basename(result2["hist_B_path"]))
 
     with open(st.session_state.zip_path_2, "rb") as zf_2:
