@@ -387,7 +387,7 @@ if st.session_state.script1_results:
         #st.image(result1["hist_path_B"], caption="Histogram B")
 
         with open(result1["excel_path"], "rb") as f1:
-            st.download_button("📊 Download Dataset", f1, file_name=os.path.basename(result["excel_path"]))
+            st.download_button("📊 Download Dataset", f1, file_name=os.path.basename(result1["excel_path"]))
 
     with open(st.session_state.zip_path_1, "rb") as zf1:
         st.download_button("🗂️ Download All Images and Histograms", zf1, file_name="All_Images_histograms.zip")
@@ -730,7 +730,7 @@ if st.session_state.script2_results:
         #st.image(result2["hist_path_B"], caption="Histogram B")
 
         with open(result2["excel_path"], "rb") as f2:
-            st.download_button("📊 Download Dataset", f2, file_name=os.path.basename(result["excel_path"]))
+            st.download_button("📊 Download Dataset", f2, file_name=os.path.basename(result2["excel_path"]))
 
     with open(st.session_state.zip_path_2, "rb") as zf2:
         st.download_button("🗂️ Download All Images and Histograms", zf2, file_name="All_Images_histograms.zip")
