@@ -381,10 +381,10 @@ if st.session_state.script1_results:
 
     for result1 in st.session_state.script1_results:
         st.subheader(f"📁 {result1['bf_name']}")
-        #st.image(result1["annotated_img_path"], caption="Annotated Image")
-        #st.image(result1["overlap_path"], caption="Overlap Image")
-        #st.image(result1["hist_path_A"], caption="Histogram A")
-        #st.image(result1["hist_path_B"], caption="Histogram B")
+        st.image(result1["annotated_img_path"], caption="Annotated Image")
+        st.image(result1["overlap_path"], caption="Overlap Image")
+        st.image(result1["hist_path_A"], caption="Histogram A")
+        st.image(result1["hist_path_B"], caption="Histogram B")
 
         with open(result1["excel_path"], "rb") as f1:
             st.download_button("📊 Download Dataset", f1, file_name=os.path.basename(result1["excel_path"]))
@@ -724,10 +724,10 @@ if st.session_state.script2_results:
 
     for result2 in st.session_state.script2_results:
         st.subheader(f"📁 {result2['bf_name']}")
-        #st.image(result2["annotated_img_path"], caption="Annotated Image")
-        #st.image(result2["overlap_path"], caption="Overlap Image")
-        #st.image(result2["hist_path_A"], caption="Histogram A")
-        #st.image(result2["hist_path_B"], caption="Histogram B")
+        st.image(result2["annotated_img_path"], caption="Annotated Image")
+        st.image(result2["overlap_path"], caption="Overlap Image")
+        st.image(result2["hist_path_A"], caption="Histogram A")
+        st.image(result2["hist_path_B"], caption="Histogram B")
 
         with open(result2["excel_path"], "rb") as f2:
             st.download_button("📊 Download Dataset", f2, file_name=os.path.basename(result2["excel_path"]))
