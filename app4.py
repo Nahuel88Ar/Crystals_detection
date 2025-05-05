@@ -50,6 +50,14 @@ import zipfile
 # === File Inputs ===
 bf_files = st.file_uploader("Upload BF files", type=["png", "jpg","tif"], accept_multiple_files=True)
 pl_files = st.file_uploader("Upload PL files", type=["png", "jpg","tif"], accept_multiple_files=True)
+
+# Example usage
+if bf_files and pl_files:
+    st.success(f"Found {len(bf_files)} BF files and {len(pl_files)} PL files.")
+    # You can now loop through them for processing
+    for bf, pl in zip(bf_files, pl_files):
+        st.write(f"Processing: {bf.name} and {pl.name}")
+        
 output_dir = "outputs"
 PIXEL_TO_UM = 1 / 7.0917  # Example pixel-to-micron conversion
 os.makedirs(output_dir, exist_ok=True)
