@@ -51,6 +51,12 @@ import zipfile
 bf_files = st.file_uploader("Upload BF files", type=["png", "jpg","tif"], accept_multiple_files=True)
 pl_files = st.file_uploader("Upload PL files", type=["png", "jpg","tif"], accept_multiple_files=True)
 
+# Sort uploaded files by filename
+if bf_files:
+    bf_files = sorted(bf_files, key=lambda x: x.name)
+if pl_files:
+    pl_files = sorted(pl_files, key=lambda x: x.name)
+
 # Example usage
 if bf_files and pl_files:
     st.success(f"Found {len(bf_files)} BF files and {len(pl_files)} PL files.")
