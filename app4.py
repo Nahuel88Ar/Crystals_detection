@@ -140,8 +140,9 @@ if st.session_state.script1_done:
         })
 
         region_area_df = region_area_df[region_area_df["Region_Area (µm²)"] > 0]
+        total_cells = region_area_df["Region_Label"].count() - 1  # Subtract 1 if you're excluding the bottom-right region
         region_area_df.loc["Total Area"] = ["", "Total Area", region_area_df["Region_Area (µm²)"].sum()]
-        region_area_df.loc["Total Cells"] = ["", "Total Cells", len(region_area_df) - 1]
+        region_area_df.loc["Total Cells"] = ["", "Total Cells", total_cells]
 
         excel_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Region_Area.xlsx")
         region_area_df.to_excel(excel_path, index=False)
@@ -160,7 +161,7 @@ if st.session_state.script1_done:
         grayB = cv2.bilateralFilter((grayB * 255).astype(np.uint8), 9, 75, 75)
         mean_intensity = np.mean(grayB)
         std_intensity = np.std(grayB)
-        dynamic_threshold = mean_intensity + 5.5 * std_intensity
+        dynamic_threshold = mean_intensity + 4 * std_intensity
         binary_B = (grayB > dynamic_threshold).astype(np.uint8)
 
         fig, ax = plt.subplots()
@@ -349,8 +350,9 @@ if st.session_state.script2_done:
         })
 
         region_area_df = region_area_df[region_area_df["Region_Area (µm²)"] > 0]
+        total_cells = region_area_df["Region_Label"].count() - 1  # Subtract 1 if you're excluding the bottom-right region
         region_area_df.loc["Total Area"] = ["", "Total Area", region_area_df["Region_Area (µm²)"].sum()]
-        region_area_df.loc["Total Cells"] = ["", "Total Cells", len(region_area_df) - 1]
+        region_area_df.loc["Total Cells"] = ["", "Total Cells", total_cells]
 
         excel_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Region_Area.xlsx")
         region_area_df.to_excel(excel_path, index=False)
