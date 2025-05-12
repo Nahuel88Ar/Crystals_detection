@@ -110,11 +110,12 @@ if st.session_state.script1_done:
         grayA = cv2.bilateralFilter((grayA * 255).astype(np.uint8), 9, 75, 75)
         threshold = threshold_otsu(grayA)
         binary_A = (grayA < threshold).astype(np.uint8) * 255
-
+        
+        # Apply morphological operations to clean up the binary mask
         binary_A = morphology.opening(binary_A)
         binary_A = morphology.remove_small_objects(binary_A.astype(bool), min_size=500)
-        binary_A = morphology.remove_small_holes(binary_A, area_threshold=100000)
         binary_A = morphology.dilation(binary_A, morphology.disk(4))
+        binary_A = morphology.remove_small_holes(binary_A, area_threshold=5000)
         binary_A = morphology.closing(binary_A, morphology.disk(4))
         binary_A = (binary_A > 0).astype(np.uint8) * 255
 
@@ -321,12 +322,13 @@ if st.session_state.script2_done:
         threshold = threshold_otsu(grayA)
         binary_A = (grayA < threshold).astype(np.uint8) * 255
 
-        binary_A = morphology.opening(binary_A)
-        binary_A = morphology.remove_small_objects(binary_A.astype(bool), min_size=500)
-        binary_A = morphology.remove_small_holes(binary_A, area_threshold=100000)
-        binary_A = morphology.dilation(binary_A, morphology.disk(4))
-        binary_A = morphology.closing(binary_A, morphology.disk(4))
-        binary_A = (binary_A > 0).astype(np.uint8) * 255
+        # Apply morphological operations to clean up the binary mask
+        binary_A = opening(binary_A)# Remove small noise
+        binary_A = remove_small_objects(binary_A.astype(bool), min_size=500)# Remove small objects
+        binary_A = morphology.dilation(binary_A, morphology.disk(4)) # Dilation
+        binary_A = remove_small_holes(binary_A, area_threshold=5000)# Fill small holes
+        binary_A = morphology.closing(binary_A, morphology.disk(4)) # Closing
+        binary_A = (binary_A > 0).astype(np.uint8) * 255 # Convert back to binary        
 
         region_labels_A = label(binary_A)
         region_props_A = regionprops(region_labels_A)
@@ -373,6 +375,11 @@ if st.session_state.script2_done:
         std_intensity = np.std(grayB)
         dynamic_threshold = mean_intensity + 4.5 * std_intensity
         binary_B = (grayB > dynamic_threshold).astype(np.uint8)
+
+        binary_B = opening(binary_B)# Remove small noise
+        binary_B= morphology.dilation(binary_B, morphology.disk(4)) # Dilation
+        binary_B = morphology.closing(binary_B, morphology.disk(4)) # Closing
+        binary_B = (binary_B > 0).astype(np.uint8) * 255 # Convert back to binary
 
         fig, ax = plt.subplots()
         ax.hist(grayB.ravel(), bins=256, range=[0, 255])
