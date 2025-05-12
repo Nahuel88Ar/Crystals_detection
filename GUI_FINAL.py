@@ -187,8 +187,8 @@ class ImageProcessingApp(QWidget):
             # Apply morphological operations to clean up the binary mask
             binary_A = opening(binary_A)# Remove small noise
             binary_A = remove_small_objects(binary_A.astype(bool), min_size=500)# Remove small objects
-            binary_A = remove_small_holes(binary_A, area_threshold=100000)# Fill small holes
             binary_A = morphology.dilation(binary_A, morphology.disk(4)) # Dilation
+            binary_A = remove_small_holes(binary_A, area_threshold=5000)# Fill small holes
             binary_A = morphology.closing(binary_A, morphology.disk(4)) # Closing
             binary_A = (binary_A > 0).astype(np.uint8) * 255 # Convert back to binary
     
@@ -530,8 +530,8 @@ class ImageProcessingApp(QWidget):
             # Apply morphological operations to clean up the binary mask
             binary_A = opening(binary_A)# Remove small noise
             binary_A = remove_small_objects(binary_A.astype(bool), min_size=500)# Remove small objects
-            binary_A = remove_small_holes(binary_A, area_threshold=100000)# Fill small holes
             binary_A = morphology.dilation(binary_A, morphology.disk(4)) # Dilation
+            binary_A = remove_small_holes(binary_A, area_threshold=5000)# Fill small holes
             binary_A = morphology.closing(binary_A, morphology.disk(4)) # Closing
             binary_A = (binary_A > 0).astype(np.uint8) * 255 # Convert back to binary
     
@@ -654,6 +654,11 @@ class ImageProcessingApp(QWidget):
       
             # Apply dynamic threshold
             binary_B = (grayB > dynamic_threshold).astype(np.uint8)
+
+            binary_B = opening(binary_B)# Remove small noise
+            binary_B= morphology.dilation(binary_B, morphology.disk(4)) # Dilation
+            binary_B = morphology.closing(binary_B, morphology.disk(4)) # Closing
+            binary_B = (binary_B > 0).astype(np.uint8) * 255 # Convert back to binary
             
             plt.figure(figsize=(8, 6))
             plt.hist(grayB.ravel(), bins=256, range=[0, 255], color='blue', alpha=0.7)
@@ -827,16 +832,3 @@ if __name__ == "__main__":
     window = ImageProcessingApp()
     window.show()
     sys.exit(app.exec_())
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
