@@ -684,14 +684,14 @@ class ImageProcessingApp(QWidget):
             std_intensity = np.std(grayB)
             
             #ORIGINAL WITH VALUE 4
-            dynamic_threshold = mean_intensity + 4.75 * std_intensity
+            dynamic_threshold = mean_intensity + 5 * std_intensity
       
             # Apply dynamic threshold
             binary_B = (grayB > dynamic_threshold).astype(np.uint8)
 
             binary_B = opening(binary_B)# Remove small noise
-            binary_B= morphology.dilation(binary_B, morphology.disk(4)) # Dilation
-            binary_B = morphology.closing(binary_B, morphology.disk(4)) # Closing
+            #binary_B= morphology.dilation(binary_B, morphology.disk(4)) # Dilation
+            #binary_B = morphology.closing(binary_B, morphology.disk(4)) # Closing
             binary_B = (binary_B > 0).astype(np.uint8) * 255 # Convert back to binary
             
             plt.figure(figsize=(8, 6))
