@@ -385,12 +385,12 @@ if st.session_state.script2_done:
         grayB = cv2.bilateralFilter((grayB * 255).astype(np.uint8), 9, 75, 75)
         mean_intensity = np.mean(grayB)
         std_intensity = np.std(grayB)
-        dynamic_threshold = mean_intensity + 4.75 * std_intensity
+        dynamic_threshold = mean_intensity + 5 * std_intensity
         binary_B = (grayB > dynamic_threshold).astype(np.uint8)
 
         binary_B = opening(binary_B)# Remove small noise
-        binary_B= morphology.dilation(binary_B, morphology.disk(4)) # Dilation
-        binary_B = morphology.closing(binary_B, morphology.disk(4)) # Closing
+        #binary_B= morphology.dilation(binary_B, morphology.disk(4)) # Dilation
+        #binary_B = morphology.closing(binary_B, morphology.disk(4)) # Closing
         binary_B = (binary_B > 0).astype(np.uint8) * 255 # Convert back to binary
 
         fig, ax = plt.subplots()
