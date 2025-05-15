@@ -206,10 +206,10 @@ if st.session_state.script1_done:
                     cell_to_crystals[cell.label].append(region.label)
                 if overlap_area > max_overlap:
                     max_overlap = overlap_area
-                    best_match = cell.label
+                    best_match_cell = cell.label
             crystal_to_cell.append({
                 "Region_Label": region.label,
-                "Associated_Cell": best_match,
+                "Associated_Cell": best_match_cell,
                 "Overlap (pixels)": max_overlap,
                 "Region_Area (pixels)": region.area,
                 "Region_Area (µm²)": region.area * (PIXEL_TO_UM ** 2)
@@ -426,10 +426,10 @@ if st.session_state.script2_done:
                     cell_to_crystals[cell.label].append(region.label)
                 if overlap_area > max_overlap:
                     max_overlap = overlap_area
-                    best_match = cell.label
+                    best_match_cell = cell.label
             crystal_to_cell.append({
                 "Region_Label": region.label,
-                "Associated_Cell": best_match,
+                "Associated_Cell": best_match_cell,
                 "Overlap (pixels)": max_overlap,
                 "Region_Area (pixels)": region.area,
                 "Region_Area (µm²)": region.area * (PIXEL_TO_UM ** 2)
