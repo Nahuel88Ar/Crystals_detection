@@ -389,7 +389,7 @@ if st.session_state.script2_done:
         grayB = cv2.bilateralFilter((grayB * 255).astype(np.uint8), 9, 75, 75)
         mean_intensity = np.mean(grayB)
         std_intensity = np.std(grayB)
-        dynamic_threshold = mean_intensity + 5 * std_intensity
+        dynamic_threshold = mean_intensity + 4.6 * std_intensity
         binary_B = (grayB > dynamic_threshold).astype(np.uint8)
 
         binary_B = opening(binary_B)# Remove small noise
@@ -440,7 +440,7 @@ if st.session_state.script2_done:
                 cell_to_crystals[best_match_cell].append(region.label)
 
         df_mapping = pd.DataFrame(crystal_to_cell)
-        df_mapping = df_mapping[(df_mapping["Region_Area (µm²)"] < 5) & (df_mapping["Overlap (pixels)"] > 0)]
+        df_mapping = df_mapping[(df_mapping["Region_Area (µm²)"] < 6) & (df_mapping["Overlap (pixels)"] > 0)]
         df_mapping["Associated_Cell_Count"] = df_mapping["Associated_Cell"].map(df_mapping["Associated_Cell"].value_counts())
         df_mapping["Total_Cells_with_crystals"] = df_mapping["Associated_Cell"].nunique()
         df_mapping.loc["Total"] = ["", "", "", "Total Area Crystals", df_mapping["Region_Area (µm²)"].sum(), "", ""]
