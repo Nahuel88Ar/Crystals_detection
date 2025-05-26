@@ -66,18 +66,7 @@ if bf_files and pl_files:
     
 output_dir = "outputs"
 #PIXEL_TO_UM = 1 / 7.0917  # Example pixel-to-micron conversion
-"""
-st.title("Pixel to Micrometer Calibration")
 
-# Input fields
-distance_in_px = st.number_input("Distance in pixels", min_value=0.0001, format="%.4f")
-known_um = st.number_input("Known distance in µm", min_value=0.0001, format="%.4f")
-
-if distance_in_px and known_um:
-    PIXEL_TO_UM = 1/(known_um / distance_in_px)
-    st.success(f"Calibration result: 1 px = {PIXEL_TO_UM:.4f} µm")
-    st.session_state.pixel_to_um = PIXEL_TO_UM  # Store in session if needed
-"""
 # Manual input for known real-world distance
 known_um = st.number_input("Known distance in µm", min_value=0.0001, format="%.4f")
 
