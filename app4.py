@@ -99,6 +99,9 @@ if bf_files:
     else:
         st.warning("Scale bar not detected. Please check the image or fall back to manual pixel input.")
 
+    # 🔁 Reset file pointer so the file can be read again later
+    first_bf_file.seek(0)
+
 os.makedirs(output_dir, exist_ok=True)
 
 # Session State Initialization
@@ -125,6 +128,8 @@ if st.session_state.script1_done:
     all_output_files = []
 
     for bf_file, pl_file in zip(bf_files, pl_files):
+        bf_file.seek(0)
+        pl_file.seek(0)
         with tempfile.NamedTemporaryFile(delete=False) as bf_temp, tempfile.NamedTemporaryFile(delete=False) as pl_temp:
             bf_temp.write(bf_file.read())
             pl_temp.write(pl_file.read())
