@@ -100,7 +100,7 @@ if bf_files:
         st.warning("Scale bar not detected. Please check the image or fall back to manual pixel input.")
 
     # 🔁 Reset file pointer so the file can be read again later
-    bf_files.seek(0)
+    bf_files[0].seek(0)
 
 os.makedirs(output_dir, exist_ok=True)
 
