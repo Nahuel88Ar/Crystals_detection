@@ -76,9 +76,9 @@ if bf_files:
     image = cv2.imdecode(np.frombuffer(bf_files[0].read(), np.uint8), cv2.IMREAD_COLOR)
     
     # Function to detect scale bar
-    def detect_scale_bar(image, region="bottom_right", bar_height_thresh=10):
+    def detect_scale_bar(image, region="bottom_right", bar_height_thresh=5):
         h, w = image.shape[:2]
-        crop = image[int(h*0.85):, int(w*0.5):]  # Crop bottom-right region
+        crop = image[int(h*0.85):, int(w*0.7):]  # Crop bottom-right region
         gray = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
         _, binary = cv2.threshold(gray, 200, 255, cv2.THRESH_BINARY)
         contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
