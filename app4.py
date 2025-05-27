@@ -250,12 +250,21 @@ if st.session_state.script1_done:
         df_mapping["Associated_Cell_Count"] = df_mapping["Associated_Cell"].map(df_mapping["Associated_Cell"].value_counts())
         df_mapping["Total_Cells_with_crystals"] = df_mapping["Associated_Cell"].nunique()
         df_mapping.loc["Total"] = ["", "", "", "Total Area Crystals", df_mapping["Region_Area (µm²)"].sum(), "", ""]
+        
+        #cell_crystal_df = pd.DataFrame([
+        #    {"Cell_Label": k, "Crystal_Labels": ", ".join(map(str, v)), "Crystal_Count": len(v)}
+        #    for k, v in cell_to_crystals.items()
+        #])
 
         cell_crystal_df = pd.DataFrame([
-            {"Cell_Label": k, "Crystal_Labels": ", ".join(map(str, v)), "Crystal_Count": len(v)}
-            for k, v in cell_to_crystals.items()
+            {
+                "Cell_Label": cell_label,
+                "Crystal_Labels": ", ".join(map(str, crystals)),
+                "Crystal_Count": len(crystals)
+            }
+            for cell_label, crystals in cell_to_crystals.items()
         ])
-
+        
         merged_df = df_mapping.merge(region_area_df, left_on="Associated_Cell", right_on="Region_Label", how="inner")
 
         grouped_xlsx_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_All_Datasets.xlsx")
@@ -471,9 +480,18 @@ if st.session_state.script2_done:
         df_mapping["Total_Cells_with_crystals"] = df_mapping["Associated_Cell"].nunique()
         df_mapping.loc["Total"] = ["", "", "", "Total Area Crystals", df_mapping["Region_Area (µm²)"].sum(), "", ""]
 
+        #cell_crystal_df = pd.DataFrame([
+        #    {"Cell_Label": k, "Crystal_Labels": ", ".join(map(str, v)), "Crystal_Count": len(v)}
+        #    for k, v in cell_to_crystals.items()
+        #])
+
         cell_crystal_df = pd.DataFrame([
-            {"Cell_Label": k, "Crystal_Labels": ", ".join(map(str, v)), "Crystal_Count": len(v)}
-            for k, v in cell_to_crystals.items()
+            {
+                "Cell_Label": cell_label,
+                "Crystal_Labels": ", ".join(map(str, crystals)),
+                "Crystal_Count": len(crystals)
+            }
+            for cell_label, crystals in cell_to_crystals.items()
         ])
 
         merged_df = df_mapping.merge(region_area_df, left_on="Associated_Cell", right_on="Region_Label", how="inner")
