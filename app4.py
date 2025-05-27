@@ -67,40 +67,18 @@ if bf_files and pl_files:
 output_dir = "outputs"
 #PIXEL_TO_UM = 1 / 7.0917  # Example pixel-to-micron conversion
 
-# Manual input for known real-world distance
+st.title("Pixel to Micrometer Calibration")
+
+# Input fields
+distance_in_px = st.number_input("Distance in pixels", min_value=0.0001, format="%.4f")
 known_um = st.number_input("Known distance in µm", min_value=0.0001, format="%.4f")
 
-# Automatically detect scale bar in BF image (for distance in pixels)
-if bf_files:
-    # Read the first BF image for scale bar detection
-    image = cv2.imdecode(np.frombuffer(bf_files[0].read(), np.uint8), cv2.IMREAD_COLOR)
-    
-    # Function to detect scale bar
-    def detect_scale_bar(image, region="bottom_right", bar_height_thresh=5):
-        h, w = image.shape[:2]
-        crop = image[int(h*0.85):, int(w*0.7):]  # Crop bottom-right region
-        gray = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
-        _, binary = cv2.threshold(gray, 200, 255, cv2.THRESH_BINARY)
-        contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
-        max_len = 0
-        for cnt in contours:
-            x, y, cw, ch = cv2.boundingRect(cnt)
-            if ch < bar_height_thresh and cw > max_len:
-                max_len = cw  # Bar width in pixels
-        return max_len
-
-    distance_in_px = detect_scale_bar(image)
-
-    if distance_in_px > 0:
-        PIXEL_TO_UM = 1 / (known_um / distance_in_px)
-        st.success(f"Auto-calculated: {distance_in_px} px for {known_um} µm → 1 px = {PIXEL_TO_UM:.4f} µm")
-        st.session_state.pixel_to_um = PIXEL_TO_UM
-    else:
-        st.warning("Scale bar not detected. Please check the image or fall back to manual pixel input.")
-
-    # 🔁 Reset file pointer so the file can be read again later
-    bf_files[0].seek(0)
+if distance_in_px and known_um:
+    PIXEL_TO_UM = 1/(known_um / distance_in_px)
+    st.success(f"Calibration result: 1 px = {PIXEL_TO_UM:.4f} µm")
+    st.session_state.pixel_to_um = PIXEL_TO_UM  # Store in session if needed
+# Manual input for known real-world distance
+#known_um = st.number_input("Known distance in µm", min_value=0.0001, format="%.4f")
 
 os.makedirs(output_dir, exist_ok=True)
 
@@ -128,8 +106,8 @@ if st.session_state.script1_done:
     all_output_files = []
 
     for bf_file, pl_file in zip(bf_files, pl_files):
-        bf_file.seek(0)
-        pl_file.seek(0)
+        #bf_file.seek(0)
+        #pl_file.seek(0)
         with tempfile.NamedTemporaryFile(delete=False) as bf_temp, tempfile.NamedTemporaryFile(delete=False) as pl_temp:
             bf_temp.write(bf_file.read())
             pl_temp.write(pl_file.read())
