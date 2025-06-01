@@ -1,0 +1,10 @@
+numpy
+pandas
+matplotlib
+openpyxl
+xlsxwriter
+scipy
+opencv-python-headless
+scikit-image
+PyQt5
+scikit-learn
