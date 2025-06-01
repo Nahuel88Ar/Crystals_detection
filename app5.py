@@ -967,25 +967,6 @@ if st.session_state.script3_done:
         region_area_excel_path = os.path.join(self.output_folder, f"{os.path.splitext(bf_file)[0]}_Region_Area_in_um2.xlsx")
         region_area_df.to_excel(region_area_excel_path, index=False)
 
-        print(f"Saved region areas for {bf_file} to {region_area_excel_path}")
-    
-        plt.figure(figsize=(8, 6))
-        plt.hist(grayA.ravel(), bins=256, range=[0, 255], color='blue', alpha=0.7)
-        plt.axvline(threshold, color='red', linestyle='dashed', linewidth=2, label=f'Threshold (A) = {threshold:.2f}')
-        #plt.axvline(auto_percentile, color='red', linestyle='dashed', linewidth=2, label=f'Threshold (A) = {auto_percentile:.2f}')
-        plt.title('Histogram of Pixel Intensities')
-        plt.xlabel('Pixel Intensity')
-        plt.ylabel('Frequency')
-        plt.legend()
-    
-        # Save the histogram image
-        hist_cells_image_path = os.path.join(self.output_folder, f"{os.path.splitext(bf_file)[0]}_Histogram_cells.png")
-        plt.savefig(hist_cells_image_path, dpi=300, bbox_inches='tight')
-        plt.pause(0.001)
-        QApplication.processEvents()  # Refresh PyQt GUI
-        print(f"Saved histogram for {bf_file} to {annotated_path}")
-        all_output_files.append(hist_cells_image_path)
-
     # Create ZIP
     zip_path_3 = os.path.join(output_dir, "All_Images_histograms.zip")
     with zipfile.ZipFile(zip_path_3, 'w') as zipf_3:
