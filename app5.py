@@ -892,6 +892,14 @@ if st.session_state.script3_done:
         fig.savefig(hist_path_A)
         all_output_files.append(hist_path_A)
 
+        # Save session result
+        st.session_state.script3_results.append({
+            "bf_name": bf_file.name,
+            "annotated_path": annotated_path,
+            "hist_A_path": hist_path_A,
+            "hist_path_Areas": hist_path_Areas,
+        })
+
     # Create ZIP
     zip_path_3 = os.path.join(output_dir, "All_Images_histograms.zip")
     with zipfile.ZipFile(zip_path_3, 'w') as zipf_3:
