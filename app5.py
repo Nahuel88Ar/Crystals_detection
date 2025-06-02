@@ -74,8 +74,6 @@ if bf_files and pl_files:
     
 output_dir = "outputs"
  
-st.title("Pixel to Micrometer Calibration")
-
 # Load scale settings
 @st.cache_data
 def load_scale_settings():
