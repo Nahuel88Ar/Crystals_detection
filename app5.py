@@ -548,7 +548,7 @@ if st.session_state.script2_done:
         px_per_um = um_to_px_map[selected_um]  # µm per pixel
         
         # Create a DataFrame for the regions with their area in µm²
-        region_area = pd.DataFrame({
+        region_area_df = pd.DataFrame({
             "Region_Label": [region.label for region in region_props_A],
             "Region_Area (pixels)": [region.area for region in region_props_A],
             "Region_Area (µm²)": [region.area * (1 / px_per_um) ** 2 for region in region_props_A]
