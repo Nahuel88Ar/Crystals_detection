@@ -229,9 +229,8 @@ if st.session_state.script1_done:
             )
             
         # Save the annotated image
-        annotated_path = os.path.join(self.output_folder, f"{os.path.splitext(bf_file)[0]}_Segmented_Annotated.png")
+        annotated_path = os.path.join(output_dir, f"{bf_file.name}_Segmented_Annotated.png")
         cv2.imwrite(annotated_path, overlay_image)
-        print(f"Saved annotated image with labels to {annotated_path}")
         all_output_files.append(annotated_path)
             
         filtered_binary_A = np.zeros_like(binary_A)
