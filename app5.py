@@ -58,6 +58,7 @@ st.title("Microscopy Image Processing")
 # Folder/file selection
 bf_files = st.file_uploader("Upload BF Images (.tif)", type=["tif"], accept_multiple_files=True)
 pl_files = st.file_uploader("Upload PL Images (.tif)", type=["tif"], accept_multiple_files=True)
+px_per_um = um_to_px_map[selected_um]  # µm per pixel
 
 # Sort uploaded files by filename
 if bf_files:
@@ -869,7 +870,8 @@ if st.session_state.script3_done:
         region_area = pd.DataFrame({
             "Region_Label": [region.label for region in region_props_A],
             "Region_Area (pixels)": [region.area for region in region_props_A],
-            "Region_Area (µm²)": [region.area * (um_to_px_map ** 2) for region in region_props_A]
+            #"Region_Area (µm²)": [region.area * (um_to_px_map ** 2) for region in region_props_A]
+            "Region_Area (µm²)": [region.area * (1 / px_per_um) ** 2 for region in region_props_A]
         })
     
         region_area_df = region_area_df[region_area_df["Region_Area (µm²)"] > 0]
