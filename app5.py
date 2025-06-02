@@ -898,6 +898,7 @@ if st.session_state.script3_done:
             "annotated_path": annotated_path,
             "hist_A_path": hist_path_A,
             "hist_path_Areas": hist_path_Areas,
+            "excel_path": excel_path,
         })
 
     # Create ZIP
