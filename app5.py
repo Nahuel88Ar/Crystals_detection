@@ -391,11 +391,11 @@ if st.session_state.script1_results:
 
     for result1 in st.session_state.script1_results:
         st.subheader(f"📁 {result1['bf_name']}")
-        st.image(result2["annotated_path"], caption="Segmented Image")
-        st.image(result2["overlap_path"], caption="Overlap Image")
-        st.image(result2["annotated_image_path"], caption="Detections")
-        st.image(result2["hist_path_Areas"], caption="Areas Histogram")
-        st.image(result2["hist_A_path"], caption="Pixels Intensity Histogram")
+        st.image(result1["annotated_path"], caption="Segmented Image")
+        st.image(result1["overlap_path"], caption="Overlap Image")
+        st.image(result1["annotated_image_path"], caption="Detections")
+        st.image(result1["hist_path_Areas"], caption="Areas Histogram")
+        st.image(result1["hist_A_path"], caption="Pixels Intensity Histogram")
 
         with open(result1["excel_path"], "rb") as f1:
             st.download_button("📊 Download Dataset", f1, file_name=os.path.basename(result1["excel_path"]),key=f"download_button_{os.path.basename(result1['excel_path'])}")
