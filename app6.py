@@ -84,7 +84,7 @@ def load_scale_settings():
         with open('scale_map.json', 'r') as f:
             return json.load(f)
     except FileNotFoundError:
-        return {"40": 5.64039652, "100": 13.889}
+        return {"40": 5.64, "100": 13.89}
 
 um_to_px_map = load_scale_settings()
 
