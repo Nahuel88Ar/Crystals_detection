@@ -807,7 +807,7 @@ if st.session_state.script3_done:
 
         filtered_binary_A = (filtered_binary_A > 0).astype(np.uint8) * 255
 
-        px_per_um = um_to_px_map[selected_um]  # µm per pixel
+        #px_per_um = um_to_px_map[selected_um]  # µm per pixel
 
         # Create a DataFrame for the regions with their area in µm²
         region_area_df = pd.DataFrame({
