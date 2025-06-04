@@ -892,7 +892,7 @@ if st.session_state.script3_done:
 
         # Save session result
         st.session_state.script3_results.append({
-            "bf_name": bf_file.name,
+            "bf_name": os.path.basename(bf_file),
             "annotated_path": annotated_path,
             "hist_A_path": hist_path_A,
             "hist_path_Areas": hist_path_Areas,
