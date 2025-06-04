@@ -197,6 +197,10 @@ if st.session_state.script1_done:
                 pl_temp.write(fpl.read())
             bf_path = bf_temp.name
             pl_path = pl_temp.name
+
+        imageA = cv2.imread(bf_path)
+        imageB = cv2.imread(pl_path)
+        
         if imageA is None or imageB is None:
             st.warning(f"Unable to read {bf_file.name} or {pl_file.name}. Skipping...")
             continue
