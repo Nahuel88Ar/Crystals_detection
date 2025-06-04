@@ -226,7 +226,7 @@ if st.session_state.script1_done:
         # Histogram Areas
         fig, ax = plt.subplots()
         ax.hist(areas, bins=20, color='skyblue', edgecolor='black')
-        hist_path_Areas = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Histogram_Areas.png")
+        hist_path_Areas = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(bf_file))[0]}_Histogram_Areas.png")
         fig.savefig(hist_path_Areas)
         all_output_files.append(hist_path_Areas)
         
@@ -288,14 +288,14 @@ if st.session_state.script1_done:
         region_area_df.loc["Total Area"] = ["", "Total Area", region_area_df["Region_Area (µm²)"].sum()]
         region_area_df.loc["Total Cells"] = ["", "Total Cells", total_cells]
 
-        excel_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Region_Area.xlsx")
+        excel_path = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(bf_file))[0]}_Region_Area.xlsx")
         region_area_df.to_excel(excel_path, index=False)
 
         # Histogram A
         fig, ax = plt.subplots()
         ax.hist(grayA.ravel(), bins=256, range=[0, 255])
         ax.axvline(threshold, color='red', linestyle='--')
-        hist_path_A = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Histogram_A.png")
+        hist_path_A = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(bf_file))[0]}_Histogram_A.png")
         fig.savefig(hist_path_A)
         all_output_files.append(hist_path_A)
 
@@ -311,12 +311,12 @@ if st.session_state.script1_done:
         fig, ax = plt.subplots()
         ax.hist(grayB.ravel(), bins=256, range=[0, 255])
         ax.axvline(dynamic_threshold, color='red', linestyle='--')
-        hist_path_B = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Histogram_B.png")
+        hist_path_B = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(bf_file))[0]}_Histogram_B.png")
         fig.savefig(hist_path_B)
         all_output_files.append(hist_path_B)
 
         overlap = (np.logical_and(cv2.resize(binary_A, (2048, 2048)) > 0, cv2.resize(binary_B, (2048, 2048)) > 0)).astype(np.uint8) * 255
-        overlap_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Overlap.png")
+        overlap_path = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(bf_file))[0]}_Overlap.png")
         cv2.imwrite(overlap_path, overlap)
         all_output_files.append(overlap_path)
 
@@ -373,7 +373,7 @@ if st.session_state.script1_done:
         
         merged_df = df_mapping.merge(region_area_df, left_on="Associated_Cell", right_on="Region_Label", how="inner")
 
-        grouped_xlsx_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_All_Datasets.xlsx")
+        grouped_xlsx_path = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(bf_file))[0]}_All_Datasets.xlsx")
         with pd.ExcelWriter(grouped_xlsx_path, engine="xlsxwriter") as writer:
             region_area_df.to_excel(writer, sheet_name="Cells", index=False)
             df_mapping.to_excel(writer, sheet_name="Crystals", index=False)
@@ -391,7 +391,7 @@ if st.session_state.script1_done:
                     cv2.putText(annotated_image, f"Cell {int(mapping['Associated_Cell'])}", (min_col, max(min_row - 5, 10)),
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 0, 0), 1, lineType=cv2.LINE_AA)
 
-        annotated_image_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Annotated.png")
+        annotated_image_path = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(bf_file))[0]}_Annotated.png")
         cv2.imwrite(annotated_image_path, annotated_image)
         all_output_files.append(annotated_image_path)
 
@@ -504,7 +504,7 @@ if st.session_state.script2_done:
         # Histogram Areas
         fig, ax = plt.subplots()
         ax.hist(areas, bins=20, color='skyblue', edgecolor='black')
-        hist_path_Areas = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Histogram_Areas.png")
+        hist_path_Areas = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(bf_file))[0]}_Histogram_Areas.png")
         fig.savefig(hist_path_Areas)
         all_output_files.append(hist_path_Areas)
         
@@ -565,14 +565,14 @@ if st.session_state.script2_done:
         region_area_df.loc["Total Area"] = ["", "Total Area", region_area_df["Region_Area (µm²)"].sum()]
         region_area_df.loc["Total Cells"] = ["", "Total Cells", total_cells]
 
-        excel_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Region_Area.xlsx")
+        excel_path = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(bf_file))[0]}_Region_Area.xlsx")
         region_area_df.to_excel(excel_path, index=False)
 
         # Histogram A
         fig, ax = plt.subplots()
         ax.hist(grayA.ravel(), bins=256, range=[0, 255])
         ax.axvline(threshold, color='red', linestyle='--')
-        hist_path_A = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Histogram_A.png")
+        hist_path_A = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(bf_file))[0]}_Histogram_A.png")
         fig.savefig(hist_path_A)
         all_output_files.append(hist_path_A)
 
@@ -593,12 +593,12 @@ if st.session_state.script2_done:
         fig, ax = plt.subplots()
         ax.hist(grayB.ravel(), bins=256, range=[0, 255])
         ax.axvline(dynamic_threshold, color='red', linestyle='--')
-        hist_path_B = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Histogram_B.png")
+        hist_path_B = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(bf_file))[0]}_Histogram_B.png")
         fig.savefig(hist_path_B)
         all_output_files.append(hist_path_B)
 
         overlap = (np.logical_and(cv2.resize(binary_A, (2048, 2048)) > 0, cv2.resize(binary_B, (2048, 2048)) > 0)).astype(np.uint8) * 255
-        overlap_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Overlap.png")
+        overlap_path = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(bf_file))[0]}_Overlap.png")
         cv2.imwrite(overlap_path, overlap)
         all_output_files.append(overlap_path)
 
@@ -665,7 +665,7 @@ if st.session_state.script2_done:
         )
         #-------------------------------------------
 
-        grouped_xlsx_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_All_Datasets.xlsx")
+        grouped_xlsx_path = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(bf_file))[0]}_All_Datasets.xlsx")
         with pd.ExcelWriter(grouped_xlsx_path, engine="xlsxwriter") as writer:
             region_area_df.to_excel(writer, sheet_name="Cells", index=False)
             df_mapping.to_excel(writer, sheet_name="Crystals", index=False)
@@ -683,7 +683,7 @@ if st.session_state.script2_done:
                     cv2.putText(annotated_image, f"Cell {int(mapping['Associated_Cell'])}", (min_col, max(min_row - 5, 10)),
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 0, 0), 1, lineType=cv2.LINE_AA)
 
-        annotated_image_path = os.path.join(output_dir, f"{os.path.splitext(bf_file.name)[0]}_Annotated.png")
+        annotated_image_path = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(bf_file))[0]}_Annotated.png")
         cv2.imwrite(annotated_image_path, annotated_image)
         all_output_files.append(annotated_image_path)
 
