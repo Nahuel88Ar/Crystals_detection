@@ -751,8 +751,13 @@ if st.session_state.script3_done:
 
     for bf_file, pl_file in zip(bf_files, pl_files):
         with tempfile.NamedTemporaryFile(delete=False) as bf_temp, tempfile.NamedTemporaryFile(delete=False) as pl_temp:
-            bf_temp.write(bf_file.read())
-            pl_temp.write(pl_file.read())
+            # open the bf_file path and read its bytes
+            with open(bf_file, 'rb') as fbf:
+                bf_temp.write(fbf.read())
+            # open the pl_file path and read its bytes
+            with open(pl_file, 'rb') as fpl:
+                pl_temp.write(fpl.read())
+                
             bf_path = bf_temp.name
             pl_path = pl_temp.name
 
