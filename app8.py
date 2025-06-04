@@ -80,6 +80,10 @@ if bf_files and pl_files:
 output_dir = "outputs"
 os.makedirs(output_dir, exist_ok=True)
 
+# Initialize rerun flag in session_state if not present
+if "rerun_flag" not in st.session_state:
+    st.session_state.rerun_flag = False
+
 @st.cache_data
 def load_scale_settings():
     try:
