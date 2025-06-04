@@ -272,7 +272,7 @@ if st.session_state.script1_done:
             )
             
         # Save the annotated image
-        annotated_path = os.path.join(output_dir, f"{bf_file.name}_Segmented_Cells.png")
+        annotated_path = os.path.join(output_dir, f"{os.path.basename(bf_file)}_Segmented_Cells.png")
         cv2.imwrite(annotated_path, overlay_image)
         all_output_files.append(annotated_path)
 
@@ -397,7 +397,7 @@ if st.session_state.script1_done:
 
         # Save session result
         st.session_state.script1_results.append({
-            "bf_name": bf_file.name,
+            "bf_name": os.path.basename(bf_file),
             "excel_path": grouped_xlsx_path,
             "annotated_img_path": annotated_image_path,
             "overlap_path": overlap_path,
@@ -550,7 +550,7 @@ if st.session_state.script2_done:
             )
             
         # Save the annotated image
-        annotated_path = os.path.join(output_dir, f"{bf_file.name}_Segmented_Cells.png")
+        annotated_path = os.path.join(output_dir, f"{os.path.basename(bf_file)}_Segmented_Cells.png")
         cv2.imwrite(annotated_path, overlay_image)
         all_output_files.append(annotated_path)
 
@@ -689,7 +689,7 @@ if st.session_state.script2_done:
 
         # Save session result
         st.session_state.script2_results.append({
-            "bf_name": bf_file.name,
+            "bf_name": os.path.basename(bf_file),
             "excel_path": grouped_xlsx_path,
             "annotated_img_path": annotated_image_path,
             "overlap_path": overlap_path,
