@@ -141,7 +141,7 @@ if st.sidebar.button("➕ Add Scale"):
         with open('scale_map.json', 'w') as f:
             json.dump(um_to_px_map, f, indent=4)
         st.sidebar.success(f"Added scale: {int(new_um_f)} µm = {new_px_f} px")
-        st.experimental_rerun()
+        st.rerun()
     except ValueError:
         st.sidebar.error("Enter valid numbers to add scale.")
 
