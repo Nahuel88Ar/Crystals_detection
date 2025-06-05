@@ -217,10 +217,8 @@ class ImageProcessingApp(QWidget):
             return
 
         um_per_px = known_um / distance_px
-        name, ok3 = QInputDialog.getText(self, "Mapping Name", "Enter a name for this scale mapping:")
-        if not ok3 or not name.strip():
-            name = f"{known_um}um_{distance_px}px"
-            #name = f"{known_um} um"
+       
+        name = f"{known_um}"
 
         self.um_to_px_map[name] = um_per_px
         self.save_scale_settings()
