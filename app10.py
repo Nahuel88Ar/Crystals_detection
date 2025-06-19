@@ -866,8 +866,8 @@ if st.session_state.script3_done:
                 region_mask[region.slice] = region.image.astype(np.uint8)
 
                 # Compute distance transform
-                distance = ndi.distance_transform_edt(region_mask)
-                #distance = distance_transform_edt(region_mask)
+                #distance = ndi.distance_transform_edt(region_mask)
+                distance = distance_transform_edt(region_mask)
 
                 # Detect peaks for watershed markers
                 # Get coordinates
