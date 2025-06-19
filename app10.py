@@ -40,6 +40,7 @@ from scipy.ndimage import distance_transform_edt
 from scipy import ndimage
 from scipy.signal import find_peaks
 from scipy import ndimage as ndi
+import scipy.ndimage as ndi
 
 from xlsxwriter import Workbook
 
@@ -866,6 +867,7 @@ if st.session_state.script3_done:
 
                 # Compute distance transform
                 distance = ndi.distance_transform_edt(region_mask)
+                #distance = distance_transform_edt(region_mask)
 
                 # Detect peaks for watershed markers
                 # Get coordinates
