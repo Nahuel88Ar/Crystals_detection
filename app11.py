@@ -842,8 +842,9 @@ if st.session_state.script2_done:
             # ✅ Store the crystal label for the matched cell
             if best_match_cell is not None:
                 cell_to_crystals[best_match_cell].append(region.label)
-        """
+        
         df_mapping = pd.DataFrame(crystal_to_cell)
+        """
         df_mapping = df_mapping[(df_mapping["Region_Area (µm²)"] < 6) & (df_mapping["Overlap (pixels)"] > 0)]
         df_mapping["Associated_Cell_Count"] = df_mapping["Associated_Cell"].map(df_mapping["Associated_Cell"].value_counts())
         df_mapping["Total_Cells_with_crystals"] = df_mapping["Associated_Cell"].nunique()
