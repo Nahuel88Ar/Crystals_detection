@@ -325,7 +325,7 @@ if st.session_state.script1_done:
 
         # 🔽 Mask the scale bar in bottom-right (adjust size as needed)
         h3, w3 = overlay_image.shape
-        overlay_image[h2-60:h2, w2-450:w2] = 0  # adjust 50 and 100 depending on the size of the scale bar#aumentar el 300 y un poco el 50
+        overlay_image[h3-60:h3, w3-450:w3] = 0  # adjust 50 and 100 depending on the size of the scale bar#aumentar el 300 y un poco el 50
 
         # Loop through each region and annotate label number
         for region in regionprops(region_labels_A):
@@ -682,7 +682,7 @@ if st.session_state.script2_done:
 
         # 🔽 Mask the scale bar in bottom-right (adjust size as needed)
         h3, w3 = overlay_image.shape
-        overlay_image[h2-60:h2, w2-450:w2] = 0  # adjust 50 and 100 depending on the size of the scale bar#aumentar el 300 y un poco el 50
+        overlay_image[h3-60:h3, w3-450:w3] = 0  # adjust 50 and 100 depending on the size of the scale bar#aumentar el 300 y un poco el 50
 
         # Loop through each region and annotate label number
         for region in regionprops(region_labels_A):
@@ -1062,7 +1062,7 @@ if st.session_state.script3_done:
 
         # 🔽 Mask the scale bar in bottom-right (adjust size as needed)
         h3, w3 = overlay_image.shape
-        overlay_image[h2-60:h2, w2-450:w2] = 0  # adjust 50 and 100 depending on the size of the scale bar#aumentar el 300 y un poco el 50
+        overlay_image[h3-60:h3, w3-450:w3] = 0  # adjust 50 and 100 depending on the size of the scale bar#aumentar el 300 y un poco el 50
 
         # Loop through each region and annotate label number
         for region in regionprops(region_labels_A):
