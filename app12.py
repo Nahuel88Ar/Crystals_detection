@@ -787,7 +787,13 @@ if st.session_state.script2_done:
                 cell_to_crystals[best_match_cell].append(region.label)
 
         df_mapping = pd.DataFrame(crystal_to_cell)
-        df_mapping = df_mapping[(df_mapping["Region_Area (µm²)"] < 6) & (df_mapping["Overlap (pixels)"] > 0)]
+        #df_mapping = df_mapping[(df_mapping["Region_Area (µm²)"] < 6) & (df_mapping["Overlap (pixels)"] > 0)]
+        
+        if "Region_Area (µm²)" in df_mapping.columns:
+            df_mapping = df_mapping[df_mapping["Region_Area (µm²)"] < 6]
+        else:
+            st.warning(f"⚠️ Warning: 'Region_Area (µm²)' column not found in df_mapping for {bf_file.name}. Skipping crystal filtering.")
+
         df_mapping["Associated_Cell_Count"] = df_mapping["Associated_Cell"].map(df_mapping["Associated_Cell"].value_counts())
         df_mapping["Total_Cells_with_crystals"] = df_mapping["Associated_Cell"].nunique()
         df_mapping.loc["Total"] = ["", "", "", "Total Area Crystals", df_mapping["Region_Area (µm²)"].sum(), "", ""]
