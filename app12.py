@@ -681,8 +681,8 @@ if st.session_state.script2_done:
         overlay_image = cv2.cvtColor((binary_A > 0).astype(np.uint8) * 255, cv2.COLOR_GRAY2BGR)
 
         # 🔽 Mask the scale bar in bottom-right (adjust size as needed)
-        h3, w3 = overlay_image.shape
-        overlay_image[h2-60:h2, w2-450:w2] = 0  # adjust 50 and 100 depending on the size of the scale bar#aumentar el 300 y un poco el 50
+        #h3, w3 = overlay_image.shape
+        #overlay_image[h2-60:h2, w2-450:w2] = 0  # adjust 50 and 100 depending on the size of the scale bar#aumentar el 300 y un poco el 50
 
         # Loop through each region and annotate label number
         for region in regionprops(region_labels_A):
