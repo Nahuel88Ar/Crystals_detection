@@ -814,6 +814,10 @@ if st.session_state.script3_done:
         binary_A = morphology.remove_small_holes(binary_A, area_threshold=5000)
         binary_A = morphology.closing(binary_A, morphology.disk(4))
         binary_A = (binary_A > 0).astype(np.uint8) * 255
+
+        #Label connected regions in binary mask
+        region_labels_A = label(binary_A)
+        region_props_A = regionprops(region_labels_A)
     
         # Define crop box coordinates (bottom-right crop region)
         crop_start_row = h - crop_margin_h
