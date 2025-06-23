@@ -230,7 +230,7 @@ if st.session_state.script1_done:
             else:
                 # Extract the subregion
                 region_mask = np.zeros_like(region_labels_A, dtype=np.uint8)
-                 region_mask[region.slice][region.image] = 1
+                region_mask[region.slice][region.image] = 1
 
                 # Compute distance transform
                 distance = ndi.distance_transform_edt(region_mask)
