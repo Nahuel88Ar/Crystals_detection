@@ -527,6 +527,11 @@ if st.session_state.script1_done:
     plt.savefig(plot_path)
     all_output_files.append(plot_path)
 
+    # Save session result
+    st.session_state.script1_results.append({
+        "plot_path": plot_path
+    })
+
     # Create ZIP
     zip_path_1 = os.path.join(output_dir, "All_Images_histograms.zip")
     with zipfile.ZipFile(zip_path_1, 'w') as zipf_1:
