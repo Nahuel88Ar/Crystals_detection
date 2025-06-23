@@ -501,8 +501,7 @@ if st.session_state.script1_done:
             "annotated_img_path": annotated_image_path,
             "overlap_path": overlap_path,
             "hist_A_path": hist_path_A,
-            "hist_B_path": hist_path_B,
-            "plot_path": plot_path
+            "hist_B_path": hist_path_B
         })
 
     # Eliminar file_numeric_id y ordenar por filename
