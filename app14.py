@@ -458,7 +458,9 @@ if st.session_state.script1_done:
         all_output_files.append(annotated_image_path)
 
         Percentage = f"{(total_distinct_cells / total_cells * 100):.2f}%" if total_cells > 0 else "0%"
-        total_distinct_cells = df_mapping["Total_Cells_with_crystals"]
+        
+        total_distinct_cells = df_mapping["Associated_Cell"].nunique()
+        df_mapping["Total_Cells_with_crystals"] = total_distinct_cells
 
         # Add to summary
         summary_rows.append({
