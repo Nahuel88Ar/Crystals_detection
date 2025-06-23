@@ -466,7 +466,7 @@ if st.session_state.script1_done:
 
         # Add to summary
         summary_rows.append({
-            "Day": os.path.splitext(bf_file)[0],
+            "Day": os.path.splitext(bf_file.name)[0],
             "total_cells": total_cells,
             "cells_with_crystals": total_distinct_cells,
             "%_cells_with_crystals": Percentage
