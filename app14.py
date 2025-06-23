@@ -502,6 +502,7 @@ if st.session_state.script1_done:
             "overlap_path": overlap_path,
             "hist_A_path": hist_path_A,
             "hist_B_path": hist_path_B,
+            "plot_path": plot_path
         })
 
     # Eliminar file_numeric_id y ordenar por filename
@@ -910,7 +911,7 @@ if st.session_state.script2_done:
             "annotated_img_path": annotated_image_path,
             "overlap_path": overlap_path,
             "hist_A_path": hist_path_A,
-            "hist_B_path": hist_path_B,
+            "hist_B_path": hist_path_B
         })
 
     # Create ZIP
