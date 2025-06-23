@@ -799,8 +799,8 @@ if st.session_state.script2_results:
         st.image(result2["overlap_path"], caption="Correlation")
 
         with open(result2["excel_path"], "rb") as f2:
-            st.download_button("📊 Download Dataset", f2, file_name=os.path.basename(result2["excel_path"]),key=f"download_button_{os.path.basename(result2['excel_path'])}")
-
+            #st.download_button("📊 Download Dataset", f2, file_name=os.path.basename(result2["excel_path"]),key=f"download_button_{os.path.basename(result2['excel_path'])}")
+            st.download_button("📊 Download Dataset", f2, file_name=os.path.basename(result2["excel_path"]),key=f"download_button_{result2['bf_name']}_{os.path.basename(result2['excel_path'])}")
     with open(st.session_state.zip_path_2, "rb") as zf_2:
         st.download_button("🗂️ Download All Images and Histograms", zf_2, file_name="All_Images_histograms.zip")
 
