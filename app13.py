@@ -339,7 +339,7 @@ if st.session_state.script1_done:
         })
 
         region_area_df = region_area_df[region_area_df["Region_Area (µm²)"] > 0]
-        total_cells = region_area_df["Region_Label"].count() 
+        total_cells = (region_area_df["Region_Label"].count()) + 1 
         region_area_df.loc["Total Area"] = ["", "Total Area", region_area_df["Region_Area (µm²)"].sum()]
         region_area_df.loc["Total Cells"] = ["", "Total Cells", total_cells]
 
