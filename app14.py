@@ -502,8 +502,8 @@ if st.session_state.script1_done:
     grouped_df = grouped_df.sort_values(by="DAYS")
 
     # Guardar Excel
-    excel_path = os.path.join(output_dir, "Plot.xlsx")
-    grouped_df.to_excel(excel_path, index=False)
+    excel_path_2 = os.path.join(output_dir, "Plot.xlsx")
+    grouped_df.to_excel(excel_path_2, index=False)
 
     # Create ZIP
     zip_path_1 = os.path.join(output_dir, "All_Images_histograms.zip")
