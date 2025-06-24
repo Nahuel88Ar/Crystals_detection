@@ -525,10 +525,11 @@ if st.session_state.script1_results:
         with open(result1["excel_path"], "rb") as f1:
             #st.download_button("📊 Download Dataset", f1, file_name=os.path.basename(result1["excel_path"]),key=f"download_button_{os.path.basename(result1['excel_path'])}")
             st.download_button("📊 Download Dataset", f1, file_name=os.path.basename(result1["excel_path"]),key=f"download_button_{result1['bf_name']}_{os.path.basename(result1['excel_path'])}")
-            st.download_button("📊 Download Dataset Plot", f1, file_name=os.path.basename("excel_path_2"),key=f"download_button_{os.path.basename("excel_path_2")}")
             
     with open(st.session_state.zip_path_1, "rb") as zf_1:
         st.download_button("🗂️ Download All Images and Histograms", zf_1, file_name="All_Images_histograms.zip")
+
+st.download_button("📊 Download Dataset Plot", f1, file_name=os.path.basename("excel_path_2"),key=f"download_button_{os.path.basename("excel_path_2")}")
 #-----------------------------------------------------------------------------------------------------------------------------------
 
 # Session State Initialization
