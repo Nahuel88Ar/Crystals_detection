@@ -540,7 +540,6 @@ if st.session_state.script1_done:
     plt.grid(True)
     plt.tight_layout()
     plt.savefig(plot_path)
-    plt.close()
     all_output_files.append(plot_path)
 
     st.session_state.script1_results.append({
