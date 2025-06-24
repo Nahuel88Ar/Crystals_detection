@@ -888,6 +888,8 @@ if st.session_state.script2_done:
 
         Percentage = f"{(total_area_cr / total_area * 100):.2f}%" if total_cells > 0 else "0%"
 
+        summary_rows = []
+
         # Add to summary
         summary_rows.append({
             "Day": os.path.splitext(bf_file.name)[0],
