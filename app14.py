@@ -925,7 +925,7 @@ if st.session_state.script2_done:
     excel_path_2 = os.path.join(output_dir, "Plot.xlsx")
     grouped_df.to_excel(excel_path_2,index=False)
 
-    st.session_state.script1_results.append({
+    st.session_state.script2_results.append({
             "bf_name": bf_file.name,
             "excel_path": grouped_xlsx_path,
             " excel_path_2":  excel_path_2,
@@ -956,7 +956,7 @@ if st.session_state.script2_results:
             st.download_button(
                 "📊 Download Dataset Data",
                 f2,
-                file_name=os.path.basename(result1["excel_path"]),
+                file_name=os.path.basename(result2["excel_path"]),
                 key=f"download_button_dataset_{idx}"
             )
 
