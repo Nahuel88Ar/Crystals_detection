@@ -529,8 +529,8 @@ if st.session_state.script1_results:
     with open(st.session_state.zip_path_1, "rb") as zf_1:
         st.download_button("🗂️ Download All Images and Histograms", zf_1, file_name="All_Images_histograms.zip")
 
-with open(excel_path_2, "rb") as f2:
-    st.download_button("📊 Download Dataset Plot", f2, file_name=os.path.basename(excel_path_2), key=f"download_button_{os.path.basename(excel_path_2)}")
+    with open(excel_path_2, "rb") as f2:
+        st.download_button("📊 Download Dataset Plot", f2, file_name=os.path.basename(excel_path_2), key=f"download_button_{os.path.basename(excel_path_2)}")
 #-----------------------------------------------------------------------------------------------------------------------------------
 
 # Session State Initialization
