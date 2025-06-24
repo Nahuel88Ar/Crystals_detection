@@ -461,7 +461,6 @@ if st.session_state.script1_done:
         st.session_state.script1_results.append({
             "bf_name": bf_file.name,
             "excel_path": grouped_xlsx_path,
-            #"excel_path_2":excel_path_2,
             "annotated_img_path": annotated_image_path,
             "overlap_path": overlap_path,
             "hist_A_path": hist_path_A,
@@ -506,6 +505,16 @@ if st.session_state.script1_done:
     excel_path_2 = os.path.join(output_dir, "Plot.xlsx")
     grouped_df.to_excel(excel_path_2, index=False)
 
+    st.session_state.script1_results.append({
+            "bf_name": bf_file.name,
+            "excel_path": grouped_xlsx_path,
+            " excel_path_2":  excel_path_2,
+            "annotated_img_path": annotated_image_path,
+            "overlap_path": overlap_path,
+            "hist_A_path": hist_path_A,
+            "hist_B_path": hist_path_B
+        })
+
     # Create ZIP
     zip_path_1 = os.path.join(output_dir, "All_Images_histograms.zip")
     with zipfile.ZipFile(zip_path_1, 'w') as zipf_1:
@@ -533,8 +542,8 @@ if st.session_state.script1_results:
     with open(st.session_state.zip_path_1, "rb") as zf_1:
         st.download_button("🗂️ Download All Images and Histograms", zf_1, file_name="All_Images_histograms.zip")
 
-    #with open(excel_path_2, "rb") as f2:
-    #    st.download_button("📊 Download Dataset Plot", f2, file_name=os.path.basename(excel_path_2), key=f"download_button_{os.path.basename(excel_path_2)}")
+    with open(excel_path_2, "rb") as f2:
+        st.download_button("📊 Download Dataset Plot", f2, file_name=os.path.basename(excel_path_2), key=f"download_button_{os.path.basename(excel_path_2)}")
 #-----------------------------------------------------------------------------------------------------------------------------------
 
 # Session State Initialization
