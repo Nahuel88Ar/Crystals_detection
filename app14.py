@@ -521,7 +521,6 @@ if st.session_state.script1_results:
         st.subheader(f"📁 {result1['bf_name']}")
         st.image(result1["annotated_img_path"], caption="Detections crystals")
         st.image(result1["overlap_path"], caption="Correlation")
-        st.image(result1["plot_path"], caption="Plot")
 
         with open(result1["excel_path"], "rb") as f1:
             #st.download_button("📊 Download Dataset", f1, file_name=os.path.basename(result1["excel_path"]),key=f"download_button_{os.path.basename(result1['excel_path'])}")
