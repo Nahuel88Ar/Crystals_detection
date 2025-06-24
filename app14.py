@@ -480,6 +480,7 @@ if st.session_state.script1_done:
             "total_cells": total_cells,
             "cells_with_crystals": total_distinct_cells,
             "%_cells_with_crystals": Percentage
+        })
       
     # Eliminar file_numeric_id y ordenar por filename
     summary_df = pd.DataFrame(summary_rows)
