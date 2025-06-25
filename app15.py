@@ -508,7 +508,7 @@ if st.session_state.script1_done:
 
     # Update session state for each processed pair
     for result1 in st.session_state.script1_results:
-        result1[" excel_path_2"] = excel_path_2
+        result1["excel_path_2"] = excel_path_2
 
     # Create ZIP
     zip_path_1 = os.path.join(output_dir, "All_Images_histograms.zip")
