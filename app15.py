@@ -453,7 +453,7 @@ if st.session_state.script1_done:
             "annotated_img_path": annotated_image_path,
             "overlap_path": overlap_path,
             "hist_A_path": hist_path_A,
-            "hist_B_path": hist_path_B,
+            "hist_B_path": hist_path_B
         })
 
         
@@ -506,9 +506,16 @@ if st.session_state.script1_done:
     fig.savefig(plot_img_path)
     all_output_files.append(plot_img_path)
 
-    # Update session state for each processed pair
-    for result1 in st.session_state.script1_results:
-        result1["excel_path_2"] = excel_path_2
+    st.session_state.script1_results.append({
+            "bf_name": bf_file.name,
+            "excel_path": grouped_xlsx_path,
+            "excel_path_2": excel_path_2,
+            "annotated_img_path": annotated_image_path,
+            "overlap_path": overlap_path,
+            "hist_A_path": hist_path_A,
+            "hist_B_path": hist_path_B,
+            "plot_img_path": plot_img_path
+        })
 
     # Create ZIP
     zip_path_1 = os.path.join(output_dir, "All_Images_histograms.zip")
