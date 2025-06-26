@@ -168,8 +168,8 @@ class ImageProcessingApp(QWidget):
         self.resize(500, 400)
 
     def log(self, message):
-    # Append a log message to the log output display (likely a QTextEdit or QListWidget)
-    self.log_output.append(message)
+        # Append a log message to the log output display (likely a QTextEdit or QListWidget)
+        self.log_output.append(message)
 
     def on_custom_um_entered(self):
         # Handle user entering a custom µm value in the combo box
